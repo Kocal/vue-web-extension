@@ -8,10 +8,10 @@
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
-    "vue": "^2.4.1"{{#if axios or router or store}},{{/if}}
     {{#axios}}"axios": "^0.16.2",{{/axios}}
     {{#router}}"vue-router": "^2.7.0",{{/router}}
     {{#store}}"vuex": "^2.3.1",{{/store}}
+    "vue": "^2.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
