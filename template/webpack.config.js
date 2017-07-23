@@ -16,7 +16,6 @@ const config = {
   resolve: {
     extensions: ['.js', '.vue'],
   },
-  // other options...
   module: {
     loaders: [
       {
