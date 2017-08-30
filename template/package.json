@@ -5,6 +5,7 @@
   "author": "{{ author }}",
   "scripts": {
     "build": "webpack --config webpack.config.js --progress --hide-modules",
+    "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
@@ -23,9 +24,10 @@
     "file-loader": "^0.11.2",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
-    "vue-loader": "^12.2.2",
+    "vue-loader": "^13.0.4",
     "vue-template-compiler": "^2.4.1",
     "webpack": "^3.3.0",
     "webpack-shell-plugin": "^0.5.0"
+    "zip-folder": "^1.0.0"
   }
 }

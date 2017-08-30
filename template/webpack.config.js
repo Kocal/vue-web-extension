@@ -65,7 +65,7 @@ const config = {
       {from: 'manifest.json', to: 'manifest.json'}
     ]),
     new WebpackShellPlugin({
-      onBuildEnd: ['bash scripts/remove-evals.sh']
+      onBuildEnd: ['node scripts/remove-evals.js']
     }),
   ]
 };
