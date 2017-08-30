@@ -5,6 +5,7 @@
   "author": "{{ author }}",
   "scripts": {
     "build": "webpack --config webpack.config.js --progress --hide-modules",
+    "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
