@@ -8,8 +8,8 @@ This template allows you to quickly start a web extension containing:
 - Vuex (configurable),
 - Webpack,
 - CSS extraction,
-- A Bash script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called at each build,
-- A Python script to automatically bundle your extension into a zip file.
+- A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build,
+- A script to package your extension into a `.zip` file.
 
 ## Requirements
 
@@ -26,13 +26,17 @@ $ npm install
 $ npm run build
 ```
 
-### `npm run watch`
-
-Watch for modifications then run `npm run build`
-
 ### `npm run build` 
 
-Build the extension into `dist` folder.
+Build the extension into `dist` folder for **production**.
+
+### `npm run build:env` 
+
+Build the extension into `dist` folder for **development**.
+
+### `npm run watch`
+
+Watch for modifications then run `npm run build`.
 
 ### `npm run build-zip`
 
