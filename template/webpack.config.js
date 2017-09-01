@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -42,8 +42,8 @@ const config = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
-          use: "css-loader",
-          fallback: "vue-loader",
+          use: 'css-loader',
+          fallback: 'vue-loader',
         })
       },
       {
@@ -69,5 +69,26 @@ const config = {
     }),
   ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.devtool = '#cheap-module-source-map';
+
+  config.plugins = (config.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ]);
+}
 
 module.exports = config;
