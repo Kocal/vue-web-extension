@@ -7,7 +7,8 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --progress --hide-modules",
     "build-zip": "node scripts/build-zip.js",
-    "watch": "npm run build -- --watch"
+    "watch": "npm run build -- --watch",
+    "watch:dev": "npm run build:dev -- --watch"
   },
   "dependencies": {
     {{#axios}}"axios": "^0.16.2",{{/axios}}
