@@ -5,7 +5,7 @@
   "author": "{{ author }}",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress --hide-modules",
-    "build:env": "cross-env NODE_ENV=development webpack --config webpack.config.js --progress --hide-modules",
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js --progress --hide-modules",
     "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch"
   },
