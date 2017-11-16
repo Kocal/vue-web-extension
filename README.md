@@ -38,6 +38,10 @@ Build the extension into `dist` folder for **development**.
 
 Watch for modifications then run `npm run build`.
 
+### `npm run watch:dev`
+
+Watch for modifications then run `npm run build:web`.
+
 ### `npm run build-zip`
 
 Build a zip file following this format `<name>-v<version>.zip`, by reading `name` and `version` from `manifest.json` file.
