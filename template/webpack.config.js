@@ -60,7 +60,7 @@ const config = {
       filename: '[name].css'
     }),
     new CopyWebpackPlugin([
-      {from: 'icons', to: 'icons'},
+      {from: 'icons', to: 'icons', ignore: ['icon.xcf']},
       {from: 'popup/popup.html', to: 'popup/popup.html'},
       {from: 'manifest.json', to: 'manifest.json'}
     ]),
