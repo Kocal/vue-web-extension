@@ -1,7 +1,9 @@
 {
   "presets": [
-    ["latest", {
-      "es2015": { "modules": "commonjs"}
+    ["@babel/preset-env", {
+      "targets": {
+        "useBuiltIns": "usage"
+      }
     }]
   ]
 }

@@ -12,14 +12,14 @@
   },
   "dependencies": {
     {{#axios}}"axios": "^0.16.2",{{/axios}}
-    {{#router}}"vue-router": "^2.7.0",{{/router}}
-    {{#store}}"vuex": "^2.3.1",{{/store}}
-    "vue": "^2.4.1"
+    {{#router}}"vue-router": "^3.0.1",{{/router}}
+    {{#store}}"vuex": "^3.0.1",{{/store}}
+    "vue": "^2.5.13"
   },
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-latest": "^6.24.1",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "babel-loader": "8.0.0-beta.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.4",
@@ -27,9 +27,9 @@
     "file-loader": "^0.11.2",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
-    "vue-loader": "^13.0.4",
-    "vue-template-compiler": "^2.4.1",
-    "webpack": "^3.3.0",
+    "vue-loader": "^14.1.1",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
     "webpack-shell-plugin": "^0.5.0",
     "zip-folder": "^1.0.0"
   }
