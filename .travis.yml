@@ -1,0 +1,32 @@
+sudo: false
+dist: trusty
+
+language: node_js
+
+node_js:
+- "8"
+- "9"
+
+env:
+  - USE_AXIOS=true  USE_ROUTER=true  USE_VUEX=true
+  - USE_AXIOS=false USE_ROUTER=false USE_VUEX=false
+
+  - USE_AXIOS=true  USE_ROUTER=false USE_VUEX=false
+  - USE_AXIOS=false USE_ROUTER=true  USE_VUEX=false
+  - USE_AXIOS=false USE_ROUTER=false USE_VUEX=true
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
+before_script:
+  - ./tests/generate_extension.exp
+  - cd tests/output
+  - yarn
+  - yarn build
+
+script:
+  - echo "Hello world!"
+  - if [ USE_AXIOS -eq true ]; then echo "Chechking Axios..."; fi;
+  - if [ USE_ROUTER -eq true ]; then echo "Chechking Vue-Router..."; fi;
+  - if [ USE_VUEX -eq true ]; then echo "Chechking Vuex..."; fi;
