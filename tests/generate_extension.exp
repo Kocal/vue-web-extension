@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+
+spawn vue init kocal/vue-web-extension output
+
+expect "Project name" { send "output\n"}
+expect "Project description" { send "The description of my wonderful extension\n" }
+expect "Author" { send "John Smith <john@smith.com>\n" }
+expect "Install vue-router?" { send "y\n" }
+expect "Install vuex?" {send "y\n" }
+expect "Install axios?" { send "n\n" }
+expect "vue-cli · Generated" { send "\n"}
