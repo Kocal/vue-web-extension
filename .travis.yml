@@ -22,6 +22,7 @@ before_install:
   # Yarn
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
+  - yarn global add vue-cli
 
 before_script:
   - ./tests/generate_extension.exp
