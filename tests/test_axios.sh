@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-set -e
+set -ev
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR/output"
 
 echo "Checking Axios..."
 
-grep axios package.json 2>&1 >/dev/null
+if ! grep -q "axios" package.json; then
+    echo "Axios not found in package.json"
+    exit 1
+fi;
