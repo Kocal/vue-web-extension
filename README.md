@@ -1,5 +1,7 @@
 # vue-web-extension-boilerplate
 
+[![Build Status](https://travis-ci.org/Kocal/vue-web-extension.svg?branch=master)](https://travis-ci.org/Kocal/vue-web-extension)
+
 This template allows you to quickly start a web extension containing:
 
 - Boilerplate for `manifest.json` and `background.js` files, and for `icons` / `popup` folders,
