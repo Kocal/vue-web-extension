@@ -31,6 +31,7 @@ before_script:
   - cd output
   - yarn
   - yarn build
+  - cd ..
 
 script:
   - if [ $USE_AXIOS = "true" ]; then   ./test_axios.sh;   else  echo "Will not testing Axios...";       fi;
