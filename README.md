@@ -8,6 +8,7 @@ This template allows you to quickly start a web extension containing:
 - Vue,
 - Vue-router (configurable),
 - Vuex (configurable),
+- Axios (configurable),
 - Webpack,
 - CSS extraction,
 - A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build,
