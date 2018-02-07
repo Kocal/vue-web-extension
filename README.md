@@ -1,11 +1,14 @@
 # vue-web-extension-boilerplate
 
+[![Build Status](https://travis-ci.org/Kocal/vue-web-extension.svg?branch=master)](https://travis-ci.org/Kocal/vue-web-extension)
+
 This template allows you to quickly start a web extension containing:
 
 - Boilerplate for `manifest.json` and `background.js` files, and for `icons` / `popup` folders,
 - Vue,
 - Vue-router (configurable),
 - Vuex (configurable),
+- Axios (configurable),
 - Webpack,
 - CSS extraction,
 - A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build,
