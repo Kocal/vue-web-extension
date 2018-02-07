@@ -1,0 +1,39 @@
+sudo: required
+dist: trusty
+
+language: node_js
+
+node_js:
+- "6"
+
+env:
+  - USE_AXIOS=true  USE_ROUTER=true  USE_VUEX=true
+  - USE_AXIOS=false USE_ROUTER=false USE_VUEX=false
+
+  - USE_AXIOS=true  USE_ROUTER=false USE_VUEX=false
+  - USE_AXIOS=false USE_ROUTER=true  USE_VUEX=false
+  - USE_AXIOS=false USE_ROUTER=false USE_VUEX=true
+
+before_install:
+  # Remove the MongoDB repo as their GPG key has expired.
+  - sudo rm /etc/apt/sources.list.d/mongodb-3.4.list
+  # APT
+  - sudo apt -qq update
+  - sudo apt install -y expect
+  # Yarn
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  - yarn global add vue-cli
+
+before_script:
+  - cd tests
+  - ./generate_extension.exp
+  - cd output
+  - yarn
+  - yarn build
+  - cd ..
+
+script:
+  - if [ $USE_AXIOS = "true" ]; then   ./test_axios.sh;   else  echo "Will not testing Axios...";       fi;
+  - if [ $USE_ROUTER = "true" ]; then  ./test_router.sh;  else  echo "Will not testing Vue-Router...";  fi;
+  - if [ $USE_VUEX = "true" ]; then    ./test_store.sh;   else  echo "Will not testing Vuex...";        fi;
