@@ -5,7 +5,14 @@ spawn vue init kocal/vue-web-extension output
 expect "Project name" { send "output\n"}
 expect "Project description" { send "The description of my wonderful extension\n" }
 expect "Author" { send "John Smith <john@smith.com>\n" }
-expect "Install vue-router?" { send "y\n" }
-expect "Install vuex?" {send "y\n" }
-expect "Install axios?" { send "n\n" }
+
+set choice [expr $::env(USE_ROUTER) == true ? "y" : "n"]
+expect "Install vue-router?" { send "$choice\n" }
+
+set choice [expr $::env(USE_STORE) == true ? "y" : "n"]
+expect "Install vuex?" {send "$choice\n" }
+
+set choice [expr $::env(USE_AXIOS) == true ? "y" : "n"]
+expect "Install axios?" { send "$choice\n" }
+
 expect "vue-cli · Generated" { send "\n"}
