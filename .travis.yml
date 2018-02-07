@@ -36,4 +36,4 @@ before_script:
 script:
   - if [ $USE_AXIOS = "true" ]; then   ./test_axios.sh;   else  echo "Will not testing Axios...";       fi;
   - if [ $USE_ROUTER = "true" ]; then  ./test_router.sh;  else  echo "Will not testing Vue-Router...";  fi;
-  - if [ $USE_VUEX = "true" ]; then    ./test_vuex.sh;    else  echo "Will not testing Vuex...";        fi;
+  - if [ $USE_VUEX = "true" ]; then    ./test_store.sh;   else  echo "Will not testing Vuex...";        fi;
