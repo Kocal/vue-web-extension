@@ -3,7 +3,8 @@
 set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$DIR"
+cd "$DIR/output"
 
-echo "$DIR"
 echo "Checking Axios..."
+
+grep axios package.json 2>&1 >/dev/null
