@@ -33,6 +33,6 @@ before_script:
   - yarn build
 
 script:
-  - [ "${USE_AXIOS}" = "true" ] && ./test_axios.sh; || echo "Will not testing Axios..."
-  - [ "${USE_ROUTER}" = "true" ] && ./test_router.sh; || echo "Will not testing Vue-Router..."
-  - [ "${USE_VUEX}" = "true" ] && ./test_vuex.sh; || echo "Will not testing Vuex..."
+  - "[ $USE_AXIOS = true ] && ./test_axios.sh; || echo Will not testing Axios..."
+  - "[ $USE_ROUTER = true ] && ./test_router.sh; || echo Will not testing Vue-Router..."
+  - "[ $USE_VUEX = true ] && ./test_vuex.sh; || echo Will not testing Vuex..."
