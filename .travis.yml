@@ -4,8 +4,7 @@ dist: trusty
 language: node_js
 
 node_js:
-- "8"
-- "9"
+- "6"
 
 env:
   - USE_AXIOS=true  USE_ROUTER=true  USE_VUEX=true
@@ -34,6 +33,6 @@ before_script:
   - yarn build
 
 script:
-  - if [ USE_AXIOS == 'true' ]; then ./test_axios.sh; else echo "Will not testing Axios..." fi;
-  - if [ USE_ROUTER == 'true' ]; then ./test_router.sh; else echo "Will not testing Vue-Router..." fi;
-  - if [ USE_VUEX == 'true' ]; then ./test_vuex.sh; else echo "Will not testing Vuex..." fi;
+  - if [ USE_AXIOS == 'true' ]; then ./test_axios.sh; else echo "Will not testing Axios..."; fi;
+  - if [ USE_ROUTER == 'true' ]; then ./test_router.sh; else echo "Will not testing Vue-Router..."; fi;
+  - if [ USE_VUEX == 'true' ]; then ./test_vuex.sh; else echo "Will not testing Vuex..."; fi;
