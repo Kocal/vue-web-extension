@@ -9,7 +9,7 @@ expect "Author" { send "John Smith <john@smith.com>\n" }
 set choice [expr $::env(USE_ROUTER) == true ? "y" : "n"]
 expect "Install vue-router?" { send "$choice\n" }
 
-set choice [expr $::env(USE_STORE) == true ? "y" : "n"]
+set choice [expr $::env(USE_VUEX) == true ? "y" : "n"]
 expect "Install vuex?" {send "$choice\n" }
 
 set choice [expr $::env(USE_AXIOS) == true ? "y" : "n"]
