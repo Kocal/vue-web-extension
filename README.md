@@ -43,7 +43,7 @@ Watch for modifications then run `npm run build`.
 
 ### `npm run watch:dev`
 
-Watch for modifications then run `npm run build:web`.
+Watch for modifications then run `npm run build:dev`.
 
 ### `npm run build-zip`
 
