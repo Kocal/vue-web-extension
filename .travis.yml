@@ -1,10 +1,14 @@
-sudo: required
+sudo: false
 dist: trusty
 
 language: node_js
 
 node_js:
 - "6"
+
+addons:
+  apt_packages:
+    - expect
 
 env:
   - USE_AXIOS=true  USE_ROUTER=true  USE_VUEX=true
@@ -17,9 +21,6 @@ env:
 before_install:
   # Remove the MongoDB repo as their GPG key has expired.
   - sudo rm /etc/apt/sources.list.d/mongodb-3.4.list
-  # APT
-  - sudo apt -qq update
-  - sudo apt install -y expect
   # Yarn
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
