@@ -3,6 +3,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const transformManifestJson = (content) => {
+  const jsonContent = JSON.parse(content);
+
+  jsonContent.version = require('./package').version;
+
+  return JSON.stringify(jsonContent, null, 2);
+};
+
 const config = {
   context: __dirname + '/src',
   entry: {
@@ -62,7 +70,7 @@ const config = {
     new CopyWebpackPlugin([
       {from: 'icons', to: 'icons', ignore: ['icon.xcf']},
       {from: 'popup/popup.html', to: 'popup/popup.html'},
-      {from: 'manifest.json', to: 'manifest.json'}
+      {from: 'manifest.json', to: 'manifest.json', transform: transformManifestJson}
     ]),
     new WebpackShellPlugin({
       onBuildEnd: ['node scripts/remove-evals.js']
