@@ -5,8 +5,6 @@ set -ev
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR/output"
 
-echo "Checking Vuex..."
-
 if ! grep -q "vuex" package.json; then
     echo "Vuex not found in package.json"
     cat packages.json

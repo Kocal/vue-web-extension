@@ -25,6 +25,44 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn global add vue-cli
+  # Utils
+  - |
+    # Stolen from https://github.com/symfony/symfony/blob/master/.travis.yml, thanks guys
+    stty cols 120
+
+    nanoseconds() {
+        local cmd="date"
+        local format="+%s%N"
+        local os=$(uname)
+        if hash gdate > /dev/null 2>&1; then
+          cmd="gdate"
+        elif [[ "$os" = Darwin ]]; then
+          format="+%s000000000"
+        fi
+        $cmd -u $format
+    }
+    export -f nanoseconds
+
+    # tfold is a helper to create folded reports
+    tfold () {
+        local title=$1
+        local fold=$(echo $title | sed -r 's/[^-_A-Za-z0-9]+/./g')
+        shift
+        local id=$(printf %08x $(( RANDOM * RANDOM )))
+        local start=$(nanoseconds)
+        echo -e "travis_fold:start:$fold"
+        echo -e "travis_time:start:$id"
+        echo -e "\\e[1;34m$title\\e[0m"
+        bash -xc "$*" 2>&1
+        local ok=$?
+        local end=$(nanoseconds)
+        echo -e "\\ntravis_time:end:$id:start=$start,finish=$end,duration=$(($end-$start))"
+        (exit $ok) &&
+            echo -e "\\e[32mOK\\e[0m $title\\n\\ntravis_fold:end:$fold" ||
+            echo -e "\\e[41mKO\\e[0m $title\\n"
+        (exit $ok)
+    }
+    export -f tfold
 
 before_script:
   - cd tests
@@ -36,6 +74,6 @@ before_script:
 
 script:
   - ./test_version.sh
-  - if [ $USE_AXIOS = "true" ]; then   ./test_axios.sh;   else  echo "Will not testing Axios...";       fi;
-  - if [ $USE_ROUTER = "true" ]; then  ./test_router.sh;  else  echo "Will not testing Vue-Router...";  fi;
-  - if [ $USE_VUEX = "true" ]; then    ./test_store.sh;   else  echo "Will not testing Vuex...";        fi;
+  - if [ $USE_AXIOS = "true" ]; then   tfold "Axios" ./test_axios.sh;        else  tfold "Skip Axios";       fi;
+  - if [ $USE_ROUTER = "true" ]; then  tfold "Vue-Router" ./test_router.sh;  else  tfold "Skip Vue-Router";  fi;
+  - if [ $USE_VUEX = "true" ]; then    tfold "Vuex" ./test_store.sh;         else  tfold "Skip Vuex";        fi;
