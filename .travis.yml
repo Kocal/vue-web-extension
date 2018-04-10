@@ -1,10 +1,14 @@
-sudo: required
+sudo: false
 dist: trusty
 
 language: node_js
 
 node_js:
 - "6"
+
+addons:
+  apt_packages:
+    - expect
 
 env:
   - USE_AXIOS=true  USE_ROUTER=true  USE_VUEX=true
@@ -17,24 +21,68 @@ env:
 before_install:
   # Remove the MongoDB repo as their GPG key has expired.
   - sudo rm /etc/apt/sources.list.d/mongodb-3.4.list
-  # APT
-  - sudo apt -qq update
-  - sudo apt install -y expect
   # Yarn
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn global add vue-cli
+  # Utils
+  - |
+    # Stolen from https://github.com/symfony/symfony/blob/master/.travis.yml, thanks guys
+    stty cols 120
 
-before_script:
-  - cd tests
-  - ./generate_extension.exp
-  - cd output
-  - yarn
-  - yarn build
-  - cd ..
+    nanoseconds() {
+        local cmd="date"
+        local format="+%s%N"
+        local os=$(uname)
+        if hash gdate > /dev/null 2>&1; then
+          cmd="gdate"
+        elif [[ "$os" = Darwin ]]; then
+          format="+%s000000000"
+        fi
+        $cmd -u $format
+    }
+    export -f nanoseconds
+
+    # tfold is a helper to create folded reports
+    tfold () {
+        local title=$1
+        local fold=$(echo $title | sed -r 's/[^-_A-Za-z0-9]+/./g')
+        shift
+        local id=$(printf %08x $(( RANDOM * RANDOM )))
+        local start=$(nanoseconds)
+        echo -e "travis_fold:start:$fold"
+        echo -e "travis_time:start:$id"
+        echo -e "\\e[1;34m$title\\e[0m"
+        bash -xc "$*" 2>&1
+        local ok=$?
+        local end=$(nanoseconds)
+        echo -e "\\ntravis_time:end:$id:start=$start,finish=$end,duration=$(($end-$start))"
+        (exit $ok) &&
+            echo -e "\\e[32mOK\\e[0m $title\\n\\ntravis_fold:end:$fold" ||
+            echo -e "\\e[41mKO\\e[0m $title\\n"
+        (exit $ok)
+    }
+    export -f tfold
+
+install:
+  - |
+    run_tests () {
+      set -e
+
+      cd tests
+      tfold "Generating extension..." ./generate_extension.exp
+
+      cd output
+      tfold "Installing extension dependencies..." yarn
+      tfold "Building extension..." yarn build
+      cd ..
+
+      tfold "Testing version behavior" ./test_version.sh
+
+      [ "${USE_AXIOS}" = "true" ] && tfold "Testing axios..." ./test_axios.sh || echo -e "\\e[1;34mSkipping axios.\\e[0m"
+      [ "${USE_ROUTER}" = "true" ] && tfold "Testing vue-router" ./test_router.sh || echo -e "\\e[1;34mSkipping vue-router.\\e[0m"
+      [ "${USE_VUEX}" = "true" ] && tfold "Testing vuex..." ./test_store.sh || echo -e "\\e[1;34mSkipping vuex.\\e[0m"
+    }
 
 script:
-  - ./test_version.sh
-  - if [ $USE_AXIOS = "true" ]; then   ./test_axios.sh;   else  echo "Will not testing Axios...";       fi;
-  - if [ $USE_ROUTER = "true" ]; then  ./test_router.sh;  else  echo "Will not testing Vue-Router...";  fi;
-  - if [ $USE_VUEX = "true" ]; then    ./test_store.sh;   else  echo "Will not testing Vuex...";        fi;
+  - (run_tests)
