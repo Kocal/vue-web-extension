@@ -12,6 +12,7 @@ const transformManifestJson = (content) => {
 };
 
 const config = {
+  mode: process.env.NODE_ENV,
   context: __dirname + '/src',
   entry: {
     'background': './background.js',
@@ -25,7 +26,7 @@ const config = {
     extensions: ['.js', '.vue'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
         loaders: 'vue-loader',
@@ -78,24 +79,13 @@ const config = {
   ]
 };
 
-if (process.env.NODE_ENV === 'production') {
-  config.devtool = '#cheap-module-source-map';
-
+if (config.mode === 'production') {
   config.plugins = (config.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
   ]);
 }
 
