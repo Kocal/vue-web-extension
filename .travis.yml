@@ -64,16 +64,25 @@ before_install:
     }
     export -f tfold
 
-before_script:
-  - cd tests
-  - tfold "Generating extension..." ./generate_extension.exp
-  - cd output
-  - tfold "Installing extension dependencies..." yarn
-  - tfold "Building extension..." yarn build
-  - cd ..
+install:
+  - |
+    run_tests () {
+      set -e
+
+      cd tests
+      tfold "Generating extension..." ./generate_extension.exp
+
+      cd output
+      tfold "Installing extension dependencies..." yarn
+      tfold "Building extension..." yarn build
+      cd ..
+
+      tfold "Testing version behavior" ./test_version.sh
+
+      [ "${USE_AXIOS}" = "true" ] && tfold "Testing axios..." ./test_axios.sh || echo -e "\\e[1;34mSkipping axios.\\e[0m"
+      [ "${USE_ROUTER}" = "true" ] && tfold "Testing vue-router" ./test_router.sh || echo -e "\\e[1;34mSkipping vue-router.\\e[0m"
+      [ "${USE_VUEX}" = "true" ] && tfold "Testing vuex..." ./test_store.sh || echo -e "\\e[1;34mSkipping vuex.\\e[0m"
+    }
 
 script:
-  - tfold "Testing version behavior" ./test_version.sh
-  - if [ $USE_AXIOS = "true" ]; then   tfold "Testing axios..." ./test_axios.sh;     else  tfold "Skipping axios...";       fi;
-  - if [ $USE_ROUTER = "true" ]; then  tfold "Testing vue-router" ./test_router.sh;  else  tfold "Skipping vue-router...";  fi;
-  - if [ $USE_VUEX = "true" ]; then    tfold "Testing vuex..." ./test_store.sh;      else  tfold "Skipping vuex...";        fi;
+  - (run_tests)
