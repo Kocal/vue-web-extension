@@ -66,14 +66,14 @@ before_install:
 
 before_script:
   - cd tests
-  - ./generate_extension.exp
+  - tfold "Generating extension..." ./generate_extension.exp
   - cd output
-  - yarn
-  - yarn build
+  - tfold "Installing extension dependencies..." yarn
+  - tfold "Building extension..." yarn build
   - cd ..
 
 script:
-  - ./test_version.sh
-  - if [ $USE_AXIOS = "true" ]; then   tfold "Axios" ./test_axios.sh;        else  tfold "Skip Axios";       fi;
-  - if [ $USE_ROUTER = "true" ]; then  tfold "Vue-Router" ./test_router.sh;  else  tfold "Skip Vue-Router";  fi;
-  - if [ $USE_VUEX = "true" ]; then    tfold "Vuex" ./test_store.sh;         else  tfold "Skip Vuex";        fi;
+  - tfold "Testing version behavior" ./test_version.sh
+  - if [ $USE_AXIOS = "true" ]; then   tfold "Testing axios..." ./test_axios.sh;     else  tfold "Skipping axios...";       fi;
+  - if [ $USE_ROUTER = "true" ]; then  tfold "Testing vue-router" ./test_router.sh;  else  tfold "Skipping vue-router...";  fi;
+  - if [ $USE_VUEX = "true" ]; then    tfold "Testing vuex..." ./test_store.sh;      else  tfold "Skipping vuex...";        fi;
