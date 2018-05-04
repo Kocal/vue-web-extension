@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const { version } = require('./package.json');
 
 const config = {
@@ -23,18 +24,6 @@ const config = {
       {
         test: /\.vue$/,
         loaders: 'vue-loader',
-        options: {
-          loaders: {
-            scss: ExtractTextPlugin.extract({
-              use: 'css-loader!sass-loader',
-              fallback: 'vue-style-loader'
-            }),
-            sass: ExtractTextPlugin.extract({
-              use: 'css-loader!sass-loader?indentedSyntax',
-              fallback: 'vue-style-loader'
-            }),
-          }
-        }
       },
       {
         test: /\.js$/,
@@ -45,7 +34,21 @@ const config = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           use: 'css-loader',
-          fallback: 'vue-loader',
+          fallback: 'vue-style-loader'
+        })
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader!sass-loader',
+          fallback: 'vue-style-loader'
+        })
+      },
+      {
+        test: /\.sass$/,
+        use: ExtractTextPlugin.extract({
+          use: 'css-loader!sass-loader?indentedSyntax',
+          fallback: 'vue-style-loader'
         })
       },
       {
@@ -58,6 +61,7 @@ const config = {
     ],
   },
   plugins: [
+    new VueLoaderPlugin(),
     new ExtractTextPlugin({
       filename: '[name].css'
     }),
