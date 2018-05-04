@@ -1,0 +1,9 @@
+{
+  "name": "vue-web-extension",
+  "version": "1.0.3",
+  "description": "A boilerplate for quickly starting a web extension with webpack, Vue and more!",
+  "main": "meta.js",
+  "repository": "https://github.com/Kocal/vue-web-extension.git",
+  "author": "Hugo Alliaume <kocal@live.fr>",
+  "license": "MIT"
+}
