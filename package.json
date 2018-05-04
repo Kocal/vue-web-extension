@@ -6,6 +6,9 @@
   "repository": "https://github.com/Kocal/vue-web-extension.git",
   "author": "Hugo Alliaume <kocal@live.fr>",
   "license": "MIT",
+  "scripts": {
+    "release": "standard-version"
+  },
   "devDependencies": {
     "standard-version": "^4.3.0"
   }
