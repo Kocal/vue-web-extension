@@ -2,14 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-const transformManifestJson = (content) => {
-  const jsonContent = JSON.parse(content);
-
-  jsonContent.version = require('./package').version;
-
-  return JSON.stringify(jsonContent, null, 2);
-};
+const { version } = require('./package.json');
 
 const config = {
   mode: process.env.NODE_ENV,
@@ -71,7 +64,20 @@ const config = {
     new CopyWebpackPlugin([
       {from: 'icons', to: 'icons', ignore: ['icon.xcf']},
       {from: 'popup/popup.html', to: 'popup/popup.html'},
-      {from: 'manifest.json', to: 'manifest.json', transform: transformManifestJson}
+      {
+        from: 'manifest.json', 
+        to: 'manifest.json', 
+        transform: (content) => {
+          const jsonContent = JSON.parse(content);
+          jsonContent.version = version;
+          
+          if (config.mode === 'development') {
+            jsonContent['content_security_policy'] = "script-src 'self' 'unsafe-eval'; object-src 'self'";
+          }
+        
+          return JSON.stringify(jsonContent, null, 2);
+        }
+      }
     ]),
     new WebpackShellPlugin({
       onBuildEnd: ['node scripts/remove-evals.js']
