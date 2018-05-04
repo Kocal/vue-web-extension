@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -32,24 +32,15 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader',
-          fallback: 'vue-style-loader',
-        }),
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader!sass-loader',
-          fallback: 'vue-style-loader',
-        }),
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.sass$/,
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader!sass-loader?indentedSyntax',
-          fallback: 'vue-style-loader',
-        }),
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader?indentedSyntax'],
       },
       {
         test: /\.(png|jpg|gif|svg|ico)$/,
@@ -62,7 +53,7 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
     new CopyWebpackPlugin([
