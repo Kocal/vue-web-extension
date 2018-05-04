@@ -5,5 +5,8 @@
   "main": "meta.js",
   "repository": "https://github.com/Kocal/vue-web-extension.git",
   "author": "Hugo Alliaume <kocal@live.fr>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "standard-version": "^4.3.0"
+  }
 }
