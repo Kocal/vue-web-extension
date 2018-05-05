@@ -7,6 +7,10 @@
     {{#lint}}
     "lint": "eslint --ext .js,.vue src",
     {{/lint}}
+    {{#prettier}}
+    "prettier": "prettier 'src/**/*.{js,vue}'",
+    "prettier:write": "npm run prettier -- --write",
+    {{/prettier}}
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "build-zip": "node scripts/build-zip.js",
@@ -39,6 +43,13 @@
     "eslint-plugin-import": "^2.7.0",
     {{/if_eq}}
     {{/lint}}
+    {{#prettier}}
+    "prettier": "^1.12.1",
+    {{#lint}}
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-config-prettier": "^2.9.0",
+    {{/lint}}
+    {{/prettier}}
     "@babel/core": "^7.0.0-beta.39",
     "@babel/preset-env": "^7.0.0-beta.39",
     "babel-loader": "8.0.0-beta.0",

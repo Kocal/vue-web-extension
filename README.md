@@ -9,6 +9,7 @@ This template allows you to quickly start a web extension containing:
 - Vue-router (configurable),
 - Vuex (configurable),
 - Axios (configurable),
+- [Prettier](https://github.com/prettier/prettier) (configurable),
 - Webpack,
 - CSS extraction,
 - A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build,

@@ -52,10 +52,15 @@ module.exports = {
           "short": 'none',
         }
       ]
+    },
+    "prettier": {
+      "type": "confirm",
+      "message": "Install Prettier?"
     }
   },
   "filters": {
     ".eslintrc.js": "lint",
+    ".prettierc": "prettier",
     "src/store/**/*": "store",
     "src/popup/router/**/*": "router"
   },

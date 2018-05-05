@@ -19,4 +19,6 @@ expect "Install axios?" { send "$choice\n" }
 expect "Install ESLint?" { send "y\n" }
 expect "Standard" { send "\n" }
 
+expect "Install Prettier?" { send "y\n" }
+
 expect "vue-cli · Generated" { send "\n"}
