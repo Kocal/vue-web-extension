@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/Kocal/vue-web-extension/compare/v1.1.0...v1.2.0) (2018-05-05)
+
+
+### Bug Fixes
+
+* **tests:** handle external scripts errors properly ([#64](https://github.com/Kocal/vue-web-extension/issues/64)) ([cbe4415](https://github.com/Kocal/vue-web-extension/commit/cbe4415))
+
+
+### Features
+
+* add eslint support ([#53](https://github.com/Kocal/vue-web-extension/issues/53)) ([2341518](https://github.com/Kocal/vue-web-extension/commit/2341518))
+* **babel:** add optional chaining plugin ([#59](https://github.com/Kocal/vue-web-extension/issues/59)) ([efda722](https://github.com/Kocal/vue-web-extension/commit/efda722))
+* **babel:** specify browser list ([#57](https://github.com/Kocal/vue-web-extension/issues/57)) ([dbd9b21](https://github.com/Kocal/vue-web-extension/commit/dbd9b21))
+* add Hot Module Reloading ([#61](https://github.com/Kocal/vue-web-extension/issues/61)) ([892713c](https://github.com/Kocal/vue-web-extension/commit/892713c))
+* add prettier ([#55](https://github.com/Kocal/vue-web-extension/issues/55)) ([b54de3e](https://github.com/Kocal/vue-web-extension/commit/b54de3e))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/Kocal/vue-web-extension/compare/v1.0.3...v1.1.0) (2018-05-04)
 
