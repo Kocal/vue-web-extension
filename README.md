@@ -10,6 +10,7 @@ This template allows you to quickly start a web extension containing:
 - Vuex (configurable),
 - Axios (configurable),
 - [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env),
+- [ESLint](https://github.com/eslint/eslint) (configurable),
 - [Prettier](https://github.com/prettier/prettier) (configurable),
 - Webpack,
 - CSS extraction,
