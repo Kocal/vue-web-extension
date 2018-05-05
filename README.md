@@ -12,7 +12,7 @@ This template allows you to quickly start a web extension containing:
 - [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env),
 - [ESLint](https://github.com/eslint/eslint) (configurable),
 - [Prettier](https://github.com/prettier/prettier) (configurable),
-- Webpack,
+- [Webpack 4](https://github.com/webpack/webpack),
 - CSS extraction,
 - A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build,
 - A script to package your extension into a `.zip` file.
