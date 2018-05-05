@@ -72,9 +72,9 @@ install:
       tfold "Installing extension dependencies..." yarn
       tfold "Building extension..." yarn build
       tfold "Testing version behavior" ../test_version.sh
-      [[ "${VUE_TEMPLATE_TEST}" =~ ^full ]] && tfold "Testing axios..." ../test_axios.sh || echo -e "\\e[1;34mSkipping axios.\\e[0m"
-      [[ "${VUE_TEMPLATE_TEST}" =~ ^full ]] && tfold "Testing vue-router" ../test_router.sh || echo -e "\\e[1;34mSkipping vue-router.\\e[0m"
-      [[ "${VUE_TEMPLATE_TEST}" =~ ^full ]] && tfold "Testing vuex..." ../test_store.sh || echo -e "\\e[1;34mSkipping vuex.\\e[0m"
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping axios.\\e[0m"      || tfold "Testing axios..." ../test_axios.sh       || exit $?
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vue-router.\\e[0m" || tfold "Testing vue-router..." ../test_router.sh || exit $?
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vuex.\\e[0m"       || tfold "Testing vuex..." ../test_store.sh        || exit $?
     }
 
 script:
