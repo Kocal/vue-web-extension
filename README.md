@@ -8,7 +8,7 @@ This template allows you to quickly start a web extension containing:
 - [Vue](https://github.com/vuejs/vue),
 - [Vue-router](https://github.com/vuejs/vue-router) (configurable),
 - [Vuex](https://github.com/vuejs/vuex) (configurable),
-- Axios (configurable),
+- [Axios](https://github.com/axios/axios) (configurable),
 - [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env),
 - [ESLint](https://github.com/eslint/eslint) (configurable),
 - [Prettier](https://github.com/prettier/prettier) (configurable),
