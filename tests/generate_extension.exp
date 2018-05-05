@@ -1,5 +1,6 @@
 #!/usr/bin/expect
 
+spawn rm -fr output
 spawn vue init .. output
 
 expect "Project name" { send "output\n"}
