@@ -5,9 +5,9 @@
 This template allows you to quickly start a web extension containing:
 
 - Boilerplate for `manifest.json` and `background.js` files, and for `icons` / `popup` folders,
-- Vue,
-- Vue-router (configurable),
-- Vuex (configurable),
+- [Vue](https://github.com/vuejs/vue),
+- [Vue-router](https://github.com/vuejs/vue-router) (configurable),
+- [Vuex](https://github.com/vuejs/vuex) (configurable),
 - Axios (configurable),
 - [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env),
 - [ESLint](https://github.com/eslint/eslint) (configurable),
