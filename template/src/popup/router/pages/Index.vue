@@ -3,15 +3,15 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {}
-    }
+export default {
+  data () {
+    return {}
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  p {
-    font-size: 20px;
-  }
+p {
+  font-size: 20px;
+}
 </style>
