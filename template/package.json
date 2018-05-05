@@ -15,7 +15,7 @@
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch",
-    "watch:dev": "npm run build:dev -- --watch"
+    "watch:dev": "cross-env HMR=true npm run build:dev -- --watch"
   },
   "dependencies": {
     {{#axios}}"axios": "^0.16.2",{{/axios}}
@@ -64,6 +64,7 @@
     "vue-loader": "^15.0.7",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^4.5.0",
+    "webpack-chrome-extension-reloader": "^0.6.7",
     "webpack-cli": "^2.0.14",
     "webpack-shell-plugin": "^0.5.0",
     "zip-folder": "^1.0.0"

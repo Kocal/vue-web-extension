@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 const { VueLoaderPlugin } = require('vue-loader');
 const { version } = require('./package.json');
 
@@ -87,6 +88,12 @@ if (config.mode === 'production') {
         NODE_ENV: '"production"',
       },
     }),
+  ]);
+}
+
+if (process.env.HMR === 'true') {
+  config.plugins = (config.plugins || []).concat([
+    new ChromeExtensionReloader(),
   ]);
 }
 
