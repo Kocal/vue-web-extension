@@ -2,9 +2,6 @@
 
 set -ev
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$DIR/output"
-
 if ! grep -q "vue-router" package.json; then
     echo "Vue-Router not found in package.json"
     cat packages.json
