@@ -9,17 +9,15 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {}
-    }
+export default {
+  data () {
+    return {}
   }
+}
 </script>
 
-<style lang="scss" scoped>
-  {{#unless router}}
-  p {
-    font-size: 20px;
-  }
-  {{/unless}}
-</style>
+{{#unless router}}<style lang="scss" scoped>
+p {
+  font-size: 20px;
+}
+</style>{{/unless}}

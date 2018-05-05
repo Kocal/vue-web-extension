@@ -5,7 +5,7 @@ import * as getters from './getters'
 import mutations from './mutations'
 import * as actions from './actions'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
@@ -13,5 +13,5 @@ export default new Vuex.Store({
   },
   getters,
   mutations,
-  actions,
+  actions
 })

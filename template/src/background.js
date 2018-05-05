@@ -1,3 +1,3 @@
-{{#if store}}import store from './store';{{/if}}
+{{#if store}}import store from './store'{{/if}}
 
-alert(`Hello ${store.getters.foo}!`);
+alert(`Hello ${store.getters.foo}!`)
