@@ -4,23 +4,23 @@
 
 This template allows you to quickly start a web extension containing:
 
-- Boilerplate for `manifest.json` and `background.js` files, and for `icons` / `popup` folders,
-- [Vue](https://github.com/vuejs/vue),
-- [Vue-router](https://github.com/vuejs/vue-router) (configurable),
-- [Vuex](https://github.com/vuejs/vuex) (configurable),
-- [Axios](https://github.com/axios/axios) (configurable),
-- [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env),
-- [ESLint](https://github.com/eslint/eslint) (configurable),
-- [Prettier](https://github.com/prettier/prettier) (configurable),
-- [Webpack 4](https://github.com/webpack/webpack),
-- CSS extraction, with [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin),
-- A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build,
-- A script to package your extension into a `.zip` file.
+- Boilerplate for `manifest.json` and `background.js` files, and for `icons` / `popup` folders
+- [Vue](https://github.com/vuejs/vue)
+- [Vue-router](https://github.com/vuejs/vue-router) (configurable)
+- [Vuex](https://github.com/vuejs/vuex) (configurable)
+- [Axios](https://github.com/axios/axios) (configurable)
+- [Webpack 4](https://github.com/webpack/webpack)
+- [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
+- [ESLint](https://github.com/eslint/eslint) (configurable)
+- [Prettier](https://github.com/prettier/prettier) (configurable)
+- CSS extraction, with [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
+- A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build
+- A script to package your extension into a `.zip` file
 
 ## Requirements
 
-- Node.js >= 6 and npm >= 3,
-- [git](https://git-scm.com),
+- Node.js >= 6 and npm >= 3
+- [git](https://git-scm.com)
 - [vue-cli](https://github.com/vuejs/vue-cli)
 
 ## Usage
