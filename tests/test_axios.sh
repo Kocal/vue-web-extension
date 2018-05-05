@@ -2,7 +2,7 @@
 
 set -ev
 
-if ! grep -q "axiosabc" package.json; then
+if ! grep -q "axios" package.json; then
     echo "Axios not found in package.json"
     cat package.json
     exit 1
