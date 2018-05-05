@@ -59,5 +59,5 @@ module.exports = {
     "src/store/**/*": "store",
     "src/popup/router/**/*": "router"
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run build"
+  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install{{#lint}}\n  npm run lint --fix{{/lint}}\n  npm run build"
 };
