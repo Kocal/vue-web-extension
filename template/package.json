@@ -52,6 +52,7 @@
     {{/prettier}}
     "@babel/core": "^7.0.0-beta.39",
     "@babel/preset-env": "^7.0.0-beta.39",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.39",
     "babel-loader": "8.0.0-beta.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
