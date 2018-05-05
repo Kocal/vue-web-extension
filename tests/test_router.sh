@@ -2,9 +2,6 @@
 
 set -ev
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$DIR/output"
-
 if ! grep -q "vue-router" package.json; then
     echo "Vue-Router not found in package.json"
     cat packages.json
@@ -15,8 +12,8 @@ test -f src/popup/router/pages/Index.vue
 test -f src/popup/router/index.js
 test -f src/popup/router/routes.js
 
-if ! grep -ql "^import router from './router';$" src/popup/popup.js; then
-    echo "Line « import router from './router'; » not found in src/popup/popup.js"
+if ! grep -ql "^import router from './router'$" src/popup/popup.js; then
+    echo "Line « import router from './router' » not found in src/popup/popup.js"
     cat src/popup/popup.js
     exit 2
 fi;

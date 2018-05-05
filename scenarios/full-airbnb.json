@@ -1,0 +1,11 @@
+{
+  "name": "full-airbnb",
+  "description": "Extension generated with Kocal/vue-web-extension",
+  "author": "Travis",
+  "router": true,
+  "store": true,
+  "axios": true,
+  "lint": true,
+  "lintConfig": "airbnb",
+  "prettier": true
+}

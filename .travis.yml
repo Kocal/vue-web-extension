@@ -11,21 +11,12 @@ cache:
 node_js:
 - "6"
 
-addons:
-  apt_packages:
-    - expect
-
 env:
-  - USE_AXIOS=true  USE_ROUTER=true  USE_VUEX=true
-  - USE_AXIOS=false USE_ROUTER=false USE_VUEX=false
-
-  - USE_AXIOS=true  USE_ROUTER=false USE_VUEX=false
-  - USE_AXIOS=false USE_ROUTER=true  USE_VUEX=false
-  - USE_AXIOS=false USE_ROUTER=false USE_VUEX=true
+  - VUE_TEMPLATE_TEST=minimal
+  - VUE_TEMPLATE_TEST=full
+  - VUE_TEMPLATE_TEST=full-airbnb
 
 before_install:
-  # Remove the MongoDB repo as their GPG key has expired.
-  - sudo rm /etc/apt/sources.list.d/mongodb-3.4.list
   # Yarn
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
@@ -75,18 +66,15 @@ install:
       set -e
 
       cd tests
-      tfold "Generating extension..." ./generate_extension.exp
+      vue init .. extension-${VUE_TEMPLATE_TEST}
 
-      cd output
+      cd extension-${VUE_TEMPLATE_TEST}
       tfold "Installing extension dependencies..." yarn
       tfold "Building extension..." yarn build
-      cd ..
-
-      tfold "Testing version behavior" ./test_version.sh
-
-      [ "${USE_AXIOS}" = "true" ] && tfold "Testing axios..." ./test_axios.sh || echo -e "\\e[1;34mSkipping axios.\\e[0m"
-      [ "${USE_ROUTER}" = "true" ] && tfold "Testing vue-router" ./test_router.sh || echo -e "\\e[1;34mSkipping vue-router.\\e[0m"
-      [ "${USE_VUEX}" = "true" ] && tfold "Testing vuex..." ./test_store.sh || echo -e "\\e[1;34mSkipping vuex.\\e[0m"
+      tfold "Testing version behavior" ../test_version.sh
+      [[ "${VUE_TEMPLATE_TEST}" =~ ^full ]] && tfold "Testing axios..." ../test_axios.sh || echo -e "\\e[1;34mSkipping axios.\\e[0m"
+      [[ "${VUE_TEMPLATE_TEST}" =~ ^full ]] && tfold "Testing vue-router" ../test_router.sh || echo -e "\\e[1;34mSkipping vue-router.\\e[0m"
+      [[ "${VUE_TEMPLATE_TEST}" =~ ^full ]] && tfold "Testing vuex..." ../test_store.sh || echo -e "\\e[1;34mSkipping vuex.\\e[0m"
     }
 
 script:
