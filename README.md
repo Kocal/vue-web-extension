@@ -13,7 +13,7 @@ This template allows you to quickly start a web extension containing:
 - [ESLint](https://github.com/eslint/eslint) (configurable),
 - [Prettier](https://github.com/prettier/prettier) (configurable),
 - [Webpack 4](https://github.com/webpack/webpack),
-- CSS extraction,
+- CSS extraction, with [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin),
 - A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build,
 - A script to package your extension into a `.zip` file.
 
