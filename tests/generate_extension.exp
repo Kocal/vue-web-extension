@@ -16,4 +16,7 @@ expect "Install vuex?" {send "$choice\n" }
 set choice [expr $::env(USE_AXIOS) == true ? "y" : "n"]
 expect "Install axios?" { send "$choice\n" }
 
+expect "Install ESLint?" { send "y\n" }
+expect "Standard" { send "\n" }
+
 expect "vue-cli · Generated" { send "\n"}

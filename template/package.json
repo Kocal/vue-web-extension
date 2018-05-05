@@ -4,6 +4,9 @@
   "description": "{{ description }}",
   "author": "{{ author }}",
   "scripts": {
+    {{#lint}}
+    "lint": "eslint --ext .js,.vue src",
+    {{/lint}}
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "build-zip": "node scripts/build-zip.js",
@@ -17,6 +20,25 @@
     "vue": "^2.5.13"
   },
   "devDependencies": {
+    {{#lint}}
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0",
+    {{#if_eq lintConfig "standard"}}
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    {{/if_eq}}
+    {{#if_eq lintConfig "airbnb"}}
+    "eslint-config-airbnb-base": "^11.3.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "^2.7.0",
+    {{/if_eq}}
+    {{/lint}}
     "@babel/core": "^7.0.0-beta.39",
     "@babel/preset-env": "^7.0.0-beta.39",
     "babel-loader": "8.0.0-beta.0",
