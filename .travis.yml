@@ -62,7 +62,7 @@ before_install:
 
 install:
   - |
-    run_tests () {
+    classical_workflow () {
       set -e
 
       cd tests
@@ -75,6 +75,31 @@ install:
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping axios.\\e[0m"      || tfold "Testing axios..." ../test_axios.sh       || exit $?
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vue-router.\\e[0m" || tfold "Testing vue-router..." ../test_router.sh || exit $?
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vuex.\\e[0m"       || tfold "Testing vuex..." ../test_store.sh        || exit $?
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping linting.\\e[0m"    || tfold "Linting..." yarn lint --fix              || exit $?
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping prettying.\\e[0m"  || tfold "Prettying..." yarn prettier:write        || exit $?
+    }
+
+  - |
+    dependabot_workflow() {
+      set -e
+
+      cd examples/${VUE_TEMPLATE_TEST}
+      tfold "Installing extension dependencies..." yarn
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping linting.\\e[0m"   || tfold "Linting..." yarn lint --fix       || exit $?
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping prettying.\\e[0m" || tfold "Prettying..." yarn prettier:write || exit $?
+      tfold "Building extension..." yarn build
+    }
+
+  - |
+    run_tests () {
+      if [[ "${TRAVIS_BRANCH}" =~ ^dependabot ]]; then
+        echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
+        dependabot_workflow
+        exit $?
+      else
+        classical_workflow
+        exit $?
+      fi
     }
 
 script:
