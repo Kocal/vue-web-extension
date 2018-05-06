@@ -5,8 +5,7 @@
   "router": false,
   "store": false,
   "axios": false,
-  "lint": true,
-  "lintConfig": "standard",
-  "prettier": true,
+  "lint": false,
+  "prettier": false,
   "autoInstall": false
 }
