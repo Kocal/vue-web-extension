@@ -4,6 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const spawn = require('child_process').spawn;
 
+const lintStyles = ['standard', 'airbnb'];
+
 /**
  * Sorts dependencies in package.json alphabetically.
  * They are unsorted because they were grouped for the handlebars helpers
@@ -31,6 +33,29 @@ exports.installDependencies = function installDependencies(cwd, executable = 'np
   return runCommand(executable, ['install'], { cwd });
 };
 
+
+/**
+ * Runs `npm run lint -- --fix` in the project directory
+ * @param {string} cwd Path of the created project directory
+ * @param {object} data Data from questionnaire
+ */
+exports.runLintFix = function runLintFix(cwd, data, color) {
+  if (data.lint && lintStyles.includes(data.lintConfig)) {
+    console.log(`\n\n${color('Running eslint --fix to comply with chosen preset rules...')}`);
+    console.log('# ========================\n');
+
+    const args =
+      data.autoInstall === 'npm'
+        ? ['run', 'lint', '--', '--fix']
+        : ['run', 'lint', '--fix'];
+
+    return runCommand(data.autoInstall, args, { cwd });
+  }
+
+  return Promise.resolve();
+};
+
+
 /**
  * Prints the final message with instructions of necessary next steps.
  * @param {Object} data Data from questionnaire.
@@ -43,13 +68,24 @@ exports.printMessage = function printMessage(data, { green, yellow }) {
 To get started:
 
   ${yellow(
-    `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(data)}npm run watch:dev (or if using yarn: yarn watch:dev)`
+    `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(data)}${lintMsg(data)}npm run watch:dev (or if using yarn: yarn watch:dev)`
   )}
   
 This template homepage can be found at https://github.com/Kocal/vue-web-extension
 `;
   console.log(message);
 };
+
+/**
+ * If the user will have to run lint --fix themselves, it returns a string
+ * containing the instruction for this step.
+ * @param {Object} data Data from questionnaire.
+ */
+function lintMsg(data) {
+  return !data.autoInstall && data.lint && lintStyles.includes(data.lintConfig)
+    ? 'npm run lint -- --fix (or for yarn: yarn run lint --fix)\n  '
+    : ''
+}
 
 /**
  * If the user will have to run `npm install` or `yarn` themselves, it returns a string
