@@ -1,6 +1,6 @@
 const path = require('path');
 const { addTestAnswers } = require('./scenarios');
-const { sortDependencies, installDependencies, printMessage } = require('./utils');
+const { sortDependencies, installDependencies, printMessage, runLintFix } = require('./utils');
 
 module.exports = {
   "metalsmith": {
@@ -110,6 +110,7 @@ module.exports = {
 
     if (data.autoInstall !== false) {
       installDependencies(cwd, data.autoInstall, green)
+        .then(() => runLintFix(cwd, data, green))
         .then(() => printMessage(data, chalk))
         .catch(e => console.log(red('Error :'), e));
     } else {
