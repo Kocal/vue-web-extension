@@ -1,0 +1,19 @@
+{
+  "name": "minimal",
+  "description": "A Vue.js web extension",
+  "version": null,
+  "manifest_version": 2,
+  "icons": {
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "browser_action": {
+    "default_title": "minimal",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}
