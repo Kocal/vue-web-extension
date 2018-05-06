@@ -75,6 +75,8 @@ install:
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping axios.\\e[0m"      || tfold "Testing axios..." ../test_axios.sh       || exit $?
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vue-router.\\e[0m" || tfold "Testing vue-router..." ../test_router.sh || exit $?
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vuex.\\e[0m"       || tfold "Testing vuex..." ../test_store.sh        || exit $?
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping linting.\\e[0m"    || tfold "Linting..." yarn lint --fix              || exit $?
+      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping prettying.\\e[0m"  || tfold "Prettying..." yarn prettier:write        || exit $?
     }
 
   - |
