@@ -92,8 +92,6 @@ install:
 
   - |
     run_tests () {
-      echo $TRAVIS_BRANCH
-
       if [[ "${TRAVIS_BRANCH}" =~ ^dependabot ]]; then
         echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
         dependabot_workflow
