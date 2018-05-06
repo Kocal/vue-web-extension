@@ -62,7 +62,7 @@ before_install:
 
 install:
   - |
-    run_tests () {
+    classical_workflow () {
       set -e
 
       cd tests
@@ -78,18 +78,23 @@ install:
     }
 
   - |
-    run_dependabot_tests () {
+    dependabot_workflow() {
       set -e
 
       echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
-      cd example
+      cd examples/${VUE_TEMPLATE_TEST}
       tfold "Installing extension dependencies..." yarn
       tfold "Linting..." yarn lint --fix
       tfold "Prettying..." yarn prettier:write
       tfold "Building extension..." yarn build
     }
 
+  - |
+    run_tests () {
+      BRANCH='dependabot/foobar'
+      "[[ ! ${BRANCH} =~ ^dependabot ]] && classical_workflow"
+      "[[ ${BRANCH} =~ ^dependabot ]] && dependabot_workflow"
+    }
+
 script:
-  - br='dependabot/foobar'
-  - "[[ ! ${br} =~ ^dependabot ]] && run_tests"
-  - "[[ ${br} =~ ^dependabot ]] && run_dependabot_tests"
+  - (run_tests)
