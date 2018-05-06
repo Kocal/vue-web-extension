@@ -33,7 +33,6 @@ exports.installDependencies = function installDependencies(cwd, executable = 'np
   return runCommand(executable, ['install'], { cwd });
 };
 
-
 /**
  * Runs `npm run lint -- --fix` in the project directory
  * @param {string} cwd Path of the created project directory
@@ -55,6 +54,21 @@ exports.runLintFix = function runLintFix(cwd, data, color) {
   return Promise.resolve();
 };
 
+/**
+ * Runs `npm run prettier:write` in the project directory
+ * @param {string} cwd Path of the created project directory
+ * @param {object} data Data from questionnaire
+ */
+exports.runPrettierWrite = function runLintFix(cwd, data, color) {
+  if (data.prettier) {
+    console.log(`\n\n${color('Running prettier --write..')}`);
+    console.log('# ========================\n');
+
+    return runCommand(data.autoInstall, ['run', 'prettier:write'], { cwd });
+  }
+
+  return Promise.resolve();
+};
 
 /**
  * Prints the final message with instructions of necessary next steps.
@@ -68,7 +82,7 @@ exports.printMessage = function printMessage(data, { green, yellow }) {
 To get started:
 
   ${yellow(
-    `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(data)}${lintMsg(data)}npm run watch:dev (or if using yarn: yarn watch:dev)`
+    `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(data)}${lintMsg(data)}${prettierMsg(data)}npm run watch:dev (or if using yarn: yarn watch:dev)`
   )}
   
 This template homepage can be found at https://github.com/Kocal/vue-web-extension
@@ -84,6 +98,17 @@ This template homepage can be found at https://github.com/Kocal/vue-web-extensio
 function lintMsg(data) {
   return !data.autoInstall && data.lint && lintStyles.includes(data.lintConfig)
     ? 'npm run lint -- --fix (or for yarn: yarn run lint --fix)\n  '
+    : ''
+}
+
+/**
+ * If the user will have to run prettier:write themselves, it returns a string
+ * containing the instruction for this step.
+ * @param {Object} data Data from questionnaire.
+ */
+function prettierMsg(data) {
+  return !data.autoInstall && data.prettier
+    ? 'npm run prettier:write (or for yarn: yarn run prettier:write)\n  '
     : ''
 }
 
