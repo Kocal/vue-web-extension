@@ -1,4 +1,6 @@
-const { addTestAnswers } = require('./scenarios')
+const path = require('path');
+const { addTestAnswers } = require('./scenarios');
+const { sortDependencies, installDependencies, printMessage } = require('./utils');
 
 module.exports = {
   "metalsmith": {
@@ -70,6 +72,28 @@ module.exports = {
       "when": "isNotTest",
       "type": "confirm",
       "message": "Install Prettier?"
+    },
+    "autoInstall": {
+      "when": "isNotTest",
+      "type": "list",
+      "message": "Automatically install dependencies?",
+      "choices": [
+        {
+          "name": "Yes, use NPM",
+          "value": "npm",
+          "short": "npm",
+        },
+        {
+          "name": "Yes, use Yarn",
+          "value": "yarn",
+          "short": "yarn",
+        },
+        {
+          "name": "No, I will handle that myself",
+          "value": false,
+          "short": "no",
+        },
+      ]
     }
   },
   "filters": {
@@ -78,5 +102,18 @@ module.exports = {
     "src/store/**/*": "store",
     "src/popup/router/**/*": "router"
   },
-  "completeMessage": "To get started:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install{{#lint}}\n  npm run lint --fix{{/lint}}\n  npm run build"
+  "complete": function (data, { chalk }) {
+    const { green, red } = chalk;
+    const cwd = path.join(process.cwd(), data.inPlace ? '' : data.destDirName);
+
+    sortDependencies(data);
+
+    if (data.autoInstall !== false) {
+      installDependencies(cwd, data.autoInstall, green)
+        .then(() => printMessage(data, chalk))
+        .catch(e => console.log(red('Error :'), e));
+    } else {
+      printMessage(data, chalk);
+    }
+  },
 };
