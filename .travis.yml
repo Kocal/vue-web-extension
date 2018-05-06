@@ -77,5 +77,19 @@ install:
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vuex.\\e[0m"       || tfold "Testing vuex..." ../test_store.sh        || exit $?
     }
 
+  - |
+    run_dependabot_tests () {
+      set -e
+
+      echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
+      cd example
+      tfold "Installing extension dependencies..." yarn
+      tfold "Linting..." yarn lint --fix
+      tfold "Prettying..." yarn prettier:write
+      tfold "Building extension..." yarn build
+    }
+
 script:
-  - (run_tests)
+  - br='dependabot/foobar'
+  - "[[ ! ${br} =~ ^dependabot ]] && run_tests"
+  - "[[ ${br} =~ ^dependabot ]] && run_dependabot_tests"
