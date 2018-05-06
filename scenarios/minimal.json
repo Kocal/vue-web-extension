@@ -7,5 +7,6 @@
   "axios": false,
   "lint": true,
   "lintConfig": "standard",
-  "prettier": true
+  "prettier": true,
+  "autoInstall": false
 }
