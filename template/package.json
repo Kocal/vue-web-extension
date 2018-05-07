@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     {{#lint}}
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^8.2.3",
     "eslint": "^4.15.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
