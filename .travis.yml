@@ -17,6 +17,7 @@ env:
   - VUE_TEMPLATE_TEST=full-airbnb
 
 before_install:
+  - git fetch --unshallow
   # Yarn
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
@@ -83,7 +84,7 @@ install:
     dependabot_workflow() {
       set -e
 
-      MODIFIED_FILES=$(git --no-pager diff --name-only master)
+      MODIFIED_FILES=$(git --no-pager diff --name-only origin/master)
       echo $MODIFIED_FILES
 
       SKIP_MINIMAL_BUILD=$($MODIFIED_FILES = *"examples/minimal/"* && ! "${VUE_TEMPLATE_TEST}" = minimal)
@@ -117,9 +118,6 @@ install:
         exit $?
       fi
     }
-
-before_script:
-  - git fetch --unshallow
 
 script:
   - (run_tests)
