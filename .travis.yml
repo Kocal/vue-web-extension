@@ -88,9 +88,9 @@ install:
       MODIFIED_FILES=$(git --no-pager diff --name-only origin/master)
       echo $MODIFIED_FILES
 
-      SKIP_MINIMAL_BUILD=$($MODIFIED_FILES = *"examples/minimal/"* && ! "${VUE_TEMPLATE_TEST}" = minimal)
-      SKIP_FULL_BUILD=$($MODIFIED_FILES = *"examples/full-airbnb/"* && ! "${VUE_TEMPLATE_TEST}" = full-airbnb)
-      SKIP_FULL_AIRBNB_BUILD=$($MODIFIED_FILES = *"examples/full/"* && ! "${VUE_TEMPLATE_TEST}" = full)
+      SKIP_MINIMAL_BUILD=$("${MODIFIED_FILES}" = *"examples/minimal/"* && ! "${VUE_TEMPLATE_TEST}" = minimal)
+      SKIP_FULL_BUILD=$("${MODIFIED_FILES}" = *"examples/full-airbnb/"* && ! "${VUE_TEMPLATE_TEST}" = full-airbnb)
+      SKIP_FULL_AIRBNB_BUILD=$("${MODIFIED_FILES}" = *"examples/full/"* && ! "${VUE_TEMPLATE_TEST}" = full)
 
       echo $SKIP_MINIMAL_BUILD
       echo $SKIP_FULL_BUILD
