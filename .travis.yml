@@ -118,5 +118,8 @@ install:
       fi
     }
 
+before_script:
+  - git fetch --unshallow
+
 script:
   - (run_tests)
