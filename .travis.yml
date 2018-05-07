@@ -83,6 +83,22 @@ install:
     dependabot_workflow() {
       set -e
 
+      MODIFIED_FILES=$(git --no-pager diff --name-only master)
+      echo $MODIFIED_FILES
+
+      SKIP_MINIMAL_BUILD=$($MODIFIED_FILES = *"examples/minimal/"* && ! "${VUE_TEMPLATE_TEST}" = minimal)
+      SKIP_FULL_BUILD=$($MODIFIED_FILES = *"examples/full-airbnb/"* && ! "${VUE_TEMPLATE_TEST}" = full-airbnb)
+      SKIP_FULL_AIRBNB_BUILD=$($MODIFIED_FILES = *"examples/full/"* && ! "${VUE_TEMPLATE_TEST}" = full)
+
+      echo $SKIP_MINIMAL_BUILD
+      echo $SKIP_FULL_BUILD
+      echo $SKIP_FULL_AIRBNB_BUILD
+
+      if [[ SKIP_MINIMAL_BUILD || SKIP_FULL_BUILD || SKIP_FULL_AIRBNB_BUILD ]]; then 
+        echo -e "\\e[1;34mSkipping building.\\e[0m"
+        exit 0
+      fi
+
       cd examples/${VUE_TEMPLATE_TEST}
       tfold "Installing extension dependencies..." yarn
       [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping linting.\\e[0m"   || tfold "Linting..." yarn lint --fix       || exit $?
