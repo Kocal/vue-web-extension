@@ -18,7 +18,7 @@
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch"
   },
   "dependencies": {
-    {{#axios}}"axios": "^0.16.2",{{/axios}}
+    {{#axios}}"axios": "^0.18.0",{{/axios}}
     {{#router}}"vue-router": "^3.0.1",{{/router}}
     {{#store}}"vuex": "^3.0.1",{{/store}}
     "vue": "^2.5.13"
