@@ -41,7 +41,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.3",
     "prettier": "^1.12.1",
-    "sass-loader": "^6.0.7",
+    "sass-loader": "^7.0.1",
     "vue-loader": "^15.0.7",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^4.8.1",
