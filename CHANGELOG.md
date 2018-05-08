@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/Kocal/vue-web-extension/compare/v1.2.0...v1.3.0) (2018-05-08)
+
+
+### Features
+
+* add auto-install behavior ([#68](https://github.com/Kocal/vue-web-extension/issues/68)) ([d1e0f1a](https://github.com/Kocal/vue-web-extension/commit/d1e0f1a))
+* **auto-install:** run eslint ([#69](https://github.com/Kocal/vue-web-extension/issues/69)) ([7378ac3](https://github.com/Kocal/vue-web-extension/commit/7378ac3))
+* **auto-install:** run Prettier ([#70](https://github.com/Kocal/vue-web-extension/issues/70)) ([03a63fb](https://github.com/Kocal/vue-web-extension/commit/03a63fb))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/Kocal/vue-web-extension/compare/v1.1.0...v1.2.0) (2018-05-05)
 
