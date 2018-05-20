@@ -34,13 +34,13 @@
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-webpack": "^0.9.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.12.0",
     {{/if_eq}}
     {{/lint}}
     {{#prettier}}
