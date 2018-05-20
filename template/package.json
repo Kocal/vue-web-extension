@@ -61,7 +61,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^7.0.1",
-    "vue-loader": "^15.0.7",
+    "vue-loader": "^15.1.0",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^4.8.3",
     "webpack-chrome-extension-reloader": "^0.6.7",
