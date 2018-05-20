@@ -22,7 +22,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.47",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.39",
-    "@babel/preset-env": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.47",
     "babel-eslint": "^8.2.3",
     "babel-loader": "8.0.0-beta.3",
     "copy-webpack-plugin": "^4.0.1",
