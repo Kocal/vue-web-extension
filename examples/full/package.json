@@ -20,7 +20,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.39",
+    "@babel/core": "^7.0.0-beta.47",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.39",
     "@babel/preset-env": "^7.0.0-beta.39",
     "babel-eslint": "^8.2.3",
