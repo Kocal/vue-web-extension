@@ -39,7 +39,7 @@
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-import-resolver-webpack": "^0.9.0",
+    "eslint-import-resolver-webpack": "^0.10.0",
     "eslint-plugin-import": "^2.12.0",
     {{/if_eq}}
     {{/lint}}
