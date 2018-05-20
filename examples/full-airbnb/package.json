@@ -32,7 +32,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-import-resolver-webpack": "^0.9.0",
+    "eslint-import-resolver-webpack": "^0.10.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-prettier": "^2.6.0",
