@@ -1040,9 +1040,9 @@ split@^1.0.0:
   dependencies:
     through "2"
 
-standard-version@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/standard-version/-/standard-version-4.3.0.tgz#41006cfee4eeab7c0ff3a47eecaa4c7506ed2e3f"
+standard-version@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/standard-version/-/standard-version-4.4.0.tgz#99de7a0709e6cafddf9c5984dd342c8cfe66e79f"
   dependencies:
     chalk "^1.1.3"
     conventional-changelog "^1.1.0"
