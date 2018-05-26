@@ -16,7 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.47",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.47",
-    "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/preset-env": "^7.0.0-beta.48",
     "babel-loader": "8.0.0-beta.3",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.1.6",
