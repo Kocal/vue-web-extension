@@ -7211,9 +7211,9 @@ webpack-addons@^1.1.5:
   dependencies:
     jscodeshift "^0.4.0"
 
-webpack-chrome-extension-reloader@^0.6.7:
-  version "0.6.7"
-  resolved "https://registry.yarnpkg.com/webpack-chrome-extension-reloader/-/webpack-chrome-extension-reloader-0.6.7.tgz#fe615c6738a56bfdbcbe2c749b3044c228f15cd6"
+webpack-chrome-extension-reloader@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/webpack-chrome-extension-reloader/-/webpack-chrome-extension-reloader-0.8.0.tgz#e406de5da940df0cf5691c140580ee2f80e3c92c"
   dependencies:
     colors "^1.1.2"
     lodash "^4.17.4"
