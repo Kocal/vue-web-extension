@@ -8,6 +8,9 @@
     "lint": "eslint --ext .js,.vue src",
     {{/lint}}
     {{#prettier}}
+    {{#prettierHook}}
+    "precommit": "precise-commits --whitelist='src/**/*.{js,vue}'",
+    {{/prettierHook}}
     "prettier": "prettier 'src/**/*.{js,vue}'",
     "prettier:write": "npm run prettier -- --write",
     {{/prettier}}
@@ -45,6 +48,10 @@
     {{/lint}}
     {{#prettier}}
     "prettier": "^1.13.5",
+    {{#prettierHook}}
+    "husky": "^0.14.3",
+    "precise-commits": "^1.0.2",
+    {{/prettierHook}}
     {{#lint}}
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-config-prettier": "^2.9.0",

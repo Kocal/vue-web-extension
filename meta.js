@@ -73,6 +73,11 @@ module.exports = {
       "type": "confirm",
       "message": "Install Prettier?"
     },
+    "prettierHook": {
+      "when": "isNotTest && prettier",
+      "type": "confirm",
+      "message": "Setup a git precommit hook that will automatically run Prettier on .vue and .js files"
+    },
     "autoInstall": {
       "when": "isNotTest",
       "type": "list",
