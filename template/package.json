@@ -44,7 +44,7 @@
     {{/if_eq}}
     {{/lint}}
     {{#prettier}}
-    "prettier": "^1.12.1",
+    "prettier": "^1.13.5",
     {{#lint}}
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-config-prettier": "^2.9.0",
