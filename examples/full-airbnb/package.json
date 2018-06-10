@@ -40,7 +40,7 @@
     "file-loader": "^1.1.11",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.3",
-    "prettier": "^1.12.1",
+    "prettier": "^1.13.5",
     "sass-loader": "^7.0.1",
     "vue-loader": "^15.2.0",
     "vue-template-compiler": "^2.5.13",
