@@ -8,5 +8,6 @@
   "lint": true,
   "lintConfig": "standard",
   "prettier": true,
+  "prettierHook": true,
   "autoInstall": false
 }
