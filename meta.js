@@ -75,8 +75,25 @@ module.exports = {
     },
     "prettierHook": {
       "when": "isNotTest && prettier",
-      "type": "confirm",
-      "message": "Setup a git precommit hook that will automatically run Prettier on .vue and .js files"
+      "type": "choice",
+      "message": "Setup a git precommit hook that will automatically run Prettier",
+      "choices": [
+        {
+          "name": 'pretty-quick (https://github.com/azz/pretty-quick)',
+          "value": 'prettyQuick',
+          "short": 'pretty-quick',
+        },
+        {
+          "name": 'precise-commits (https://github.com/nrwl/precise-commits)',
+          "value": 'preciseCommits',
+          "short": 'precise-commits',
+        },
+        {
+          "name": "No, I will handle that myself",
+          "value": false,
+          "short": "no",
+        },
+      ]
     },
     "autoInstall": {
       "when": "isNotTest",
