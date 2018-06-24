@@ -8,6 +8,6 @@
   "lint": true,
   "lintConfig": "airbnb",
   "prettier": true,
-  "prettierHook": true,
+  "prettierHook": "preciseCommits",
   "autoInstall": false
 }
