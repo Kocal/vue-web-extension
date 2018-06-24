@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/Kocal/vue-web-extension/compare/v1.3.0...v1.3.1) (2018-06-24)
+
+
+### Bug Fixes
+
+* .babelrc format ([#225](https://github.com/Kocal/vue-web-extension/issues/225)) ([0e39124](https://github.com/Kocal/vue-web-extension/commit/0e39124))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/Kocal/vue-web-extension/compare/v1.2.0...v1.3.0) (2018-05-08)
 
