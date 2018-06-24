@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/Kocal/vue-web-extension/compare/v1.3.1...v1.4.0) (2018-06-24)
+
+
+### Features
+
+* setup git precommit hook for running Prettier ([#224](https://github.com/Kocal/vue-web-extension/issues/224)) ([7a8ee9b](https://github.com/Kocal/vue-web-extension/commit/7a8ee9b)), closes [#219](https://github.com/Kocal/vue-web-extension/issues/219)
+
+
+
 <a name="1.3.1"></a>
 ## [1.3.1](https://github.com/Kocal/vue-web-extension/compare/v1.3.0...v1.3.1) (2018-06-24)
 
