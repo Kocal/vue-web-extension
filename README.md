@@ -13,6 +13,7 @@ This template allows you to quickly start a web extension containing:
 - [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
 - [ESLint](https://github.com/eslint/eslint) (configurable)
 - [Prettier](https://github.com/prettier/prettier) (configurable)
+- A git precommit hook for running Prettier by using [pretty-quick](https://github.com/azz/pretty-quick) or [precise-commits](https://github.com/nrwl/precise-commits) (configurable)
 - CSS extraction, with [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
 - A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build
 - A script to package your extension into a `.zip` file

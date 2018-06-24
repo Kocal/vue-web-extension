@@ -73,6 +73,28 @@ module.exports = {
       "type": "confirm",
       "message": "Install Prettier?"
     },
+    "prettierHook": {
+      "when": "isNotTest && prettier",
+      "type": "choice",
+      "message": "Setup a git precommit hook that will automatically run Prettier",
+      "choices": [
+        {
+          "name": 'pretty-quick (https://github.com/azz/pretty-quick)',
+          "value": 'prettyQuick',
+          "short": 'pretty-quick',
+        },
+        {
+          "name": 'precise-commits (https://github.com/nrwl/precise-commits)',
+          "value": 'preciseCommits',
+          "short": 'precise-commits',
+        },
+        {
+          "name": "No, I will handle that myself",
+          "value": false,
+          "short": "no",
+        },
+      ]
+    },
     "autoInstall": {
       "when": "isNotTest",
       "type": "list",
