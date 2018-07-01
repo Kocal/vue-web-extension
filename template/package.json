@@ -55,7 +55,7 @@
     "husky": "^0.14.3",
     "pretty-quick": "^1.6.0",
     {{/if_eq}}
-    {{#if_eq lintConfig "preciseCommits"}}
+    {{#if_eq prettierHook "preciseCommits"}}
     "husky": "^0.14.3",
     "precise-commits": "^1.0.2",
     {{/if_eq}}
