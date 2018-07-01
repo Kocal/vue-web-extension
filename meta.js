@@ -75,7 +75,7 @@ module.exports = {
     },
     "prettierHook": {
       "when": "isNotTest && prettier",
-      "type": "choice",
+      "type": "list",
       "message": "Setup a git precommit hook that will automatically run Prettier",
       "choices": [
         {
