@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/Kocal/vue-web-extension/compare/v1.4.0...v1.5.0) (2018-07-01)
+
+
+### Bug Fixes
+
+* prettier git hook is not asked during init ([#255](https://github.com/Kocal/vue-web-extension/issues/255)) ([391a17b](https://github.com/Kocal/vue-web-extension/commit/391a17b))
+* rename prettier configuration file ([#253](https://github.com/Kocal/vue-web-extension/issues/253)) ([2927a0d](https://github.com/Kocal/vue-web-extension/commit/2927a0d)), closes [#252](https://github.com/Kocal/vue-web-extension/issues/252)
+* **tmpl:** do not use vuex getter if vuex is disabled ([#259](https://github.com/Kocal/vue-web-extension/issues/259)) ([7739197](https://github.com/Kocal/vue-web-extension/commit/7739197)), closes [#254](https://github.com/Kocal/vue-web-extension/issues/254)
+
+
+### Features
+
+* **deps:** add [@types](https://github.com/types)/chrome ([#258](https://github.com/Kocal/vue-web-extension/issues/258)) ([35e68a3](https://github.com/Kocal/vue-web-extension/commit/35e68a3))
+* **eslint:** add web extension environment ([#257](https://github.com/Kocal/vue-web-extension/issues/257)) ([5a904f1](https://github.com/Kocal/vue-web-extension/commit/5a904f1))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/Kocal/vue-web-extension/compare/v1.3.1...v1.4.0) (2018-06-24)
 
