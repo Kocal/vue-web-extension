@@ -8,6 +8,7 @@ module.exports = {
   },
   env: {
     browser: true,
+    webextensions: true,
   },
   {{#if_eq lintConfig "standard"}}
   extends: [
