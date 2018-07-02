@@ -128,6 +128,10 @@
   version "7.0.0-beta.49"
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-beta.49.tgz#0e9fcbb834f878bb365d2a8ea90eee21ba3ccd23"
 
+"@babel/helper-plugin-utils@7.0.0-beta.51":
+  version "7.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-beta.51.tgz#0f6a5f2b6d1c6444413f8fab60940d79b63c2031"
+
 "@babel/helper-regex@7.0.0-beta.49":
   version "7.0.0-beta.49"
   resolved "https://registry.yarnpkg.com/@babel/helper-regex/-/helper-regex-7.0.0-beta.49.tgz#ff244f19c2a2f167ff4b3165a636b08fd641816b"
@@ -218,12 +222,12 @@
     "@babel/helper-plugin-utils" "7.0.0-beta.49"
     "@babel/plugin-syntax-optional-catch-binding" "7.0.0-beta.49"
 
-"@babel/plugin-proposal-optional-chaining@^7.0.0-beta.49":
-  version "7.0.0-beta.49"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.0.0-beta.49.tgz#d6e1757fdd439a62b84faf2a851e822a18e2b42c"
+"@babel/plugin-proposal-optional-chaining@^7.0.0-beta.51":
+  version "7.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.0.0-beta.51.tgz#0c57597bc4233400fe86fe4ead97dff9e32626f3"
   dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.49"
-    "@babel/plugin-syntax-optional-chaining" "7.0.0-beta.49"
+    "@babel/helper-plugin-utils" "7.0.0-beta.51"
+    "@babel/plugin-syntax-optional-chaining" "7.0.0-beta.51"
 
 "@babel/plugin-proposal-unicode-property-regex@7.0.0-beta.49":
   version "7.0.0-beta.49"
@@ -251,11 +255,11 @@
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.49"
 
-"@babel/plugin-syntax-optional-chaining@7.0.0-beta.49":
-  version "7.0.0-beta.49"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-chaining/-/plugin-syntax-optional-chaining-7.0.0-beta.49.tgz#007b5e7ef639b96d58e763bb5c8da1449844b976"
+"@babel/plugin-syntax-optional-chaining@7.0.0-beta.51":
+  version "7.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-chaining/-/plugin-syntax-optional-chaining-7.0.0-beta.51.tgz#51022b28dd19bd5e4e33196e1f1124cfcd2d4b6c"
   dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.49"
+    "@babel/helper-plugin-utils" "7.0.0-beta.51"
 
 "@babel/plugin-transform-arrow-functions@7.0.0-beta.49":
   version "7.0.0-beta.49"
