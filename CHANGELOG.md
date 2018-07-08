@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/Kocal/vue-web-extension/compare/v1.5.0...v1.6.0) (2018-07-08)
+
+
+### Features
+
+* add prompt for options page ([#263](https://github.com/Kocal/vue-web-extension/issues/263)) ([0bdb5e6](https://github.com/Kocal/vue-web-extension/commit/0bdb5e6))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/Kocal/vue-web-extension/compare/v1.4.0...v1.5.0) (2018-07-01)
 
