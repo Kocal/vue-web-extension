@@ -45,7 +45,7 @@
     "husky": "^0.14.3",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.3",
-    "prettier": "^1.13.5",
+    "prettier": "^1.13.7",
     "pretty-quick": "^1.6.0",
     "sass-loader": "^7.0.1",
     "vue-loader": "^15.2.0",
