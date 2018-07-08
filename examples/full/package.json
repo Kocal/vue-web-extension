@@ -48,7 +48,7 @@
     "prettier": "^1.13.5",
     "pretty-quick": "^1.6.0",
     "sass-loader": "^7.0.1",
-    "vue-loader": "^15.2.0",
+    "vue-loader": "^15.2.4",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^4.14.0",
     "webpack-chrome-extension-reloader": "^0.6.7",
