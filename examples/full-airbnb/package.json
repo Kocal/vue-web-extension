@@ -44,7 +44,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.3",
     "precise-commits": "^1.0.2",
-    "prettier": "^1.13.5",
+    "prettier": "^1.13.7",
     "sass-loader": "^7.0.1",
     "vue-loader": "^15.2.0",
     "vue-template-compiler": "^2.5.13",
