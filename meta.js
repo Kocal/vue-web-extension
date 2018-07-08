@@ -26,6 +26,11 @@ module.exports = {
       "type": "string",
       "message": "Author"
     },
+    "options": {
+      "when": "isNotTest",
+      "type": "confirm",
+      "message": "Provide an options page? (https://developer.chrome.com/extensions/options)"
+    },
     "router": {
       "when": "isNotTest",
       "type": "confirm",
