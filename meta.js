@@ -126,6 +126,7 @@ module.exports = {
   "filters": {
     ".eslintrc.js": "lint",
     ".prettierrc": "prettier",
+    "src/options/**/*": "options",
     "src/store/**/*": "store",
     "src/popup/router/**/*": "router"
   },

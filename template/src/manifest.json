@@ -15,5 +15,9 @@
     "scripts": [
       "background.js"
     ]
-  }
+  }{{#options}},
+  "options_ui": {
+    "page": "options/options.html",
+    "chrome_style": true
+  }{{/options}}
 }
