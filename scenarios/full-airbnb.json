@@ -2,6 +2,7 @@
   "name": "full-airbnb",
   "description": "Extension generated with Kocal/vue-web-extension",
   "author": "Travis",
+  "options": true,
   "router": true,
   "store": true,
   "axios": true,
