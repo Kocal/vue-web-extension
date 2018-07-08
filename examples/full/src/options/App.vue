@@ -1,16 +1,16 @@
 <template>
-  <p>Hello world!</p>
+  <div>
+    <p>Hello world!</p>
+  </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
-  },
+  name: 'App',
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 p {
   font-size: 20px;
 }

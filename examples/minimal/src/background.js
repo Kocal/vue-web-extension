@@ -1,3 +1,2 @@
+alert('Hello world!')
 
-
-alert(`Hello ${store.getters.foo}!`)

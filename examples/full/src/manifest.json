@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "full",
   "description": "A Vue.js web extension",
   "version": null,
   "manifest_version": 2,
@@ -8,12 +8,16 @@
     "128": "icons/icon_128.png"
   },
   "browser_action": {
-    "default_title": "example",
+    "default_title": "full",
     "default_popup": "popup/popup.html"
   },
   "background": {
     "scripts": [
       "background.js"
     ]
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "chrome_style": true
   }
 }
