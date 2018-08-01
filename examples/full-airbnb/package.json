@@ -42,7 +42,7 @@
     "file-loader": "^1.1.11",
     "husky": "^0.14.3",
     "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.2",
     "precise-commits": "^1.0.2",
     "prettier": "^1.13.5",
     "sass-loader": "^7.0.1",
