@@ -27,7 +27,7 @@
     "@types/chrome": "^0.0.69",
     "babel-eslint": "^8.2.5",
     "babel-loader": "^8.0.0-beta.4",
-    "copy-webpack-plugin": "^4.0.1",
+    "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
     "eslint": "^5.0.1",
