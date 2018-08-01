@@ -614,9 +614,9 @@
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@types/filewriter/-/filewriter-0.0.28.tgz#c054e8af4d9dd75db4e63abc76f885168714d4b3"
 
-"@vue/component-compiler-utils@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@vue/component-compiler-utils/-/component-compiler-utils-1.2.1.tgz#3d543baa75cfe5dab96e29415b78366450156ef6"
+"@vue/component-compiler-utils@^2.0.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@vue/component-compiler-utils/-/component-compiler-utils-2.1.0.tgz#8331eadc8acdbc35aace5a61d2153e6f6434bfe2"
   dependencies:
     consolidate "^0.15.1"
     hash-sum "^1.0.2"
@@ -624,7 +624,7 @@
     merge-source-map "^1.1.0"
     postcss "^6.0.20"
     postcss-selector-parser "^3.1.1"
-    prettier "^1.11.1"
+    prettier "^1.13.7"
     source-map "^0.5.6"
     vue-template-es2015-compiler "^1.6.0"
 
@@ -4412,9 +4412,13 @@ prepend-http@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
 
-prettier@^1.11.1, prettier@^1.13.5:
+prettier@^1.13.5:
   version "1.13.5"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.13.5.tgz#7ae2076998c8edce79d63834e9b7b09fead6bfd0"
+
+prettier@^1.13.7:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.14.0.tgz#847c235522035fd988100f1f43cf20a7d24f9372"
 
 pretty-quick@^1.6.0:
   version "1.6.0"
@@ -5666,11 +5670,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
 
-vue-loader@^15.2.0:
-  version "15.2.0"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.2.0.tgz#5a8138e490a1040942d2f10ae68fa72b5a923364"
+vue-loader@^15.2.6:
+  version "15.2.6"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-15.2.6.tgz#4ad4e56a0ca1fd89ebc4220f9e3bd4723097b397"
   dependencies:
-    "@vue/component-compiler-utils" "^1.2.1"
+    "@vue/component-compiler-utils" "^2.0.0"
     hash-sum "^1.0.2"
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
