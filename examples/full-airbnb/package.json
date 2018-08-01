@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.55",
     "@babel/preset-env": "^7.0.0-beta.51",
     "@types/chrome": "^0.0.69",
     "babel-eslint": "^8.2.5",
