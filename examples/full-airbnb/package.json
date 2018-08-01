@@ -37,7 +37,7 @@
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-prettier": "^2.6.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-vue": "^4.5.0",
     "file-loader": "^1.1.11",
     "husky": "^0.14.3",
