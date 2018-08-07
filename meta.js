@@ -39,7 +39,7 @@ module.exports = {
     "store": {
       "when": "isNotTest",
       "type": "confirm",
-      "message": "Install vuex?"
+      "message":  "Install vuex? It comes with a plugin that let you share your Vuex store between background/popup/options/... (https://github.com/MitsuhaKitsune/vuex-webextensions)"
     },
     "axios": {
       "when": "isNotTest",
