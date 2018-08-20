@@ -18,9 +18,7 @@ before_install:
   - git remote set-branches --add origin master
   - git fetch
   # Yarn
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
-  - yarn global add vue-cli
+  - npm i -g yarn vue-cli
   # Utils
   - |
     # Stolen from https://github.com/symfony/symfony/blob/master/.travis.yml, thanks guys
