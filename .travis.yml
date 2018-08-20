@@ -12,7 +12,7 @@ node_js:
 - "8"
 
 env:
-  - VUE_TEMPLATES=minimal full full-airbnb
+  - VUE_TEMPLATES="minimal full full-airbnb"
 
 before_install:
   - git remote set-branches --add origin master
@@ -73,12 +73,12 @@ install:
       tfold "Installing extension dependencies..." yarn
       tfold "Building extension..." yarn build
       tfold "Testing version behavior" ../test_version.sh
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping options..." true    || tfold "Testing options..." ../test_options.sh   || exit $?
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping axios..." true      || tfold "Testing axios..." ../test_axios.sh       || exit $?
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping vue-router..." true || tfold "Testing vue-router..." ../test_router.sh || exit $?
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping vuex..." true       || tfold "Testing vuex..." ../test_store.sh        || exit $?
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping linting..." true    || tfold "Linting..." yarn lint --fix              || exit $?
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping prettying..." true  || tfold "Prettying..." yarn prettier:write        || exit $?
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing options..."    ../test_options.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing axios..."      ../test_axios.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing vue-router..." ../test_router.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing vuex..."       ../test_store.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
     }
 
   - |
@@ -88,23 +88,19 @@ install:
 
       MODIFIED_FILES=$(git --no-pager diff --name-only origin/master)
 
-      SKIP_MINIMAL_BUILD=$([[ ! "${MODIFIED_FILES}" = *"examples/minimal/"* && "${VUE_TEMPLATE}" = minimal ]] && echo 'true' || echo 'false')
-      SKIP_FULL_BUILD=$([[ ! "${MODIFIED_FILES}" = *"examples/full-airbnb/"* && "${VUE_TEMPLATE}" = full-airbnb ]] && echo 'true' || echo 'false')
-      SKIP_FULL_AIRBNB_BUILD=$([[ ! "${MODIFIED_FILES}" = *"examples/full/"* && "${VUE_TEMPLATE}" = full ]] && echo 'true' || echo 'false')
+      SKIP_MINIMAL_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/minimal/"* && $VUE_TEMPLATE = minimal ]]
+      SKIP_FULL_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/full-airbnb/"* && $VUE_TEMPLATE = full-airbnb ]]
+      SKIP_FULL_AIRBNB_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/full/"* && $VUE_TEMPLATE = full ]]
 
-      echo -e "\\e[1;34mSkip minimal build? \\e[1;33m${SKIP_MINIMAL_BUILD}.\\e[0m"
-      echo -e "\\e[1;34mSkip full build? \\e[1;33m${SKIP_FULL_BUILD}.\\e[0m"
-      echo -e "\\e[1;34mSkip full-airbnb build? \\e[1;33m${SKIP_FULL_AIRBNB_BUILD}.\\e[0m"
-
-      if [[ $SKIP_MINIMAL_BUILD = 'true' || $SKIP_FULL_BUILD = 'true' || $SKIP_FULL_AIRBNB_BUILD = 'true' ]]; then
+      if [[ $SKIP_MINIMAL_BUILD || $SKIP_FULL_BUILD || $SKIP_FULL_AIRBNB_BUILD ]]; then
         echo -e "\\e[1;34mThen skip building.\\e[0m"
         exit 0
       fi
 
       cd examples/${VUE_TEMPLATE}
       tfold "Installing extension dependencies..." yarn
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping linting..." true   || tfold "Linting..." yarn lint --fix       || exit $?
-      [[ ! "${VUE_TEMPLATE}" =~ ^full ]] && tfold "Skipping prettying..." true || tfold "Prettying..." yarn prettier:write || exit $?
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Linting..."   yarn lint --fix; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..." yarn prettier:write; fi
       tfold "Building extension..." yarn build
     }
 
