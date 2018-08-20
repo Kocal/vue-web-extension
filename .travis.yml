@@ -21,7 +21,7 @@ before_install:
   - npm i -g yarn vue-cli
   # Utils
   - |
-    # Stolen from https://github.com/symfony/symfony/blob/master/.travis.yml, thanks guys
+    # Setup Symfony bash utils
     stty cols 120
 
     nanoseconds() {
@@ -58,8 +58,8 @@ before_install:
     }
     export -f tfold
 
-install:
   - |
+    # Setup jsdoc-vuejs bash utils
     classical_workflow () {
       set -e
       export VUE_TEMPLATE=$1
@@ -76,8 +76,8 @@ install:
       if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
       if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
     }
+    export -f classical_workflow
 
-  - |
     dependabot_workflow () {
       set -e
       export VUE_TEMPLATE=$1
@@ -99,8 +99,8 @@ install:
       if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..." yarn prettier:write; fi
       tfold "Building extension..." yarn build
     }
+    export -f dependabot_workflow
 
-  - |
     run_tests () {
       export VUE_TEMPLATE=$1
 
@@ -113,6 +113,7 @@ install:
         exit $?
       fi
     }
+    export -f run_tests
 
 script:
   - for VUE_TEMPLATE in $VUE_TEMPLATES; do (run_tests $VUE_TEMPLATE); done;
