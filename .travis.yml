@@ -7,25 +7,24 @@ cache:
   yarn: true
   directories:
     - node_modules
+    - examples/full/node_modules
+    - examples/full-airbnb/node_modules
+    - examples/minimal/node_modules
 
 node_js:
 - "8"
 
 env:
-  - VUE_TEMPLATE_TEST=minimal
-  - VUE_TEMPLATE_TEST=full
-  - VUE_TEMPLATE_TEST=full-airbnb
+  - VUE_TEMPLATES="minimal full full-airbnb"
 
 before_install:
   - git remote set-branches --add origin master
   - git fetch
   # Yarn
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
-  - yarn global add vue-cli
+  - npm i -g yarn vue-cli
   # Utils
   - |
-    # Stolen from https://github.com/symfony/symfony/blob/master/.travis.yml, thanks guys
+    # Setup Symfony bash utils
     stty cols 120
 
     nanoseconds() {
@@ -43,7 +42,7 @@ before_install:
 
     # tfold is a helper to create folded reports
     tfold () {
-        local title=$1
+        local title="\\e[1;33m[$VUE_TEMPLATE]\\e[0m $1"
         local fold=$(echo $title | sed -r 's/[^-_A-Za-z0-9]+/./g')
         shift
         local id=$(printf %08x $(( RANDOM * RANDOM )))
@@ -62,63 +61,62 @@ before_install:
     }
     export -f tfold
 
-install:
   - |
+    # Setup jsdoc-vuejs bash utils
     classical_workflow () {
       set -e
+      export VUE_TEMPLATE=$1
 
       cd tests
-      vue init .. extension-${VUE_TEMPLATE_TEST}
-
-      cd extension-${VUE_TEMPLATE_TEST}
+      tfold "Creating extension..." vue init .. extension-${VUE_TEMPLATE} && cd extension-${VUE_TEMPLATE}
       tfold "Installing extension dependencies..." yarn
       tfold "Building extension..." yarn build
       tfold "Testing version behavior" ../test_version.sh
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping options.\\e[0m"    || tfold "Testing options..." ../test_options.sh   || exit $?
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping axios.\\e[0m"      || tfold "Testing axios..." ../test_axios.sh       || exit $?
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vue-router.\\e[0m" || tfold "Testing vue-router..." ../test_router.sh || exit $?
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping vuex.\\e[0m"       || tfold "Testing vuex..." ../test_store.sh        || exit $?
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping linting.\\e[0m"    || tfold "Linting..." yarn lint --fix              || exit $?
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping prettying.\\e[0m"  || tfold "Prettying..." yarn prettier:write        || exit $?
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing options..."    ../test_options.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing axios..."      ../test_axios.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing vue-router..." ../test_router.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing vuex..."       ../test_store.sh; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
     }
+    export -f classical_workflow
 
-  - |
     dependabot_workflow () {
       set -e
+      export VUE_TEMPLATE=$1
 
       MODIFIED_FILES=$(git --no-pager diff --name-only origin/master)
 
-      SKIP_MINIMAL_BUILD=$([[ ! "${MODIFIED_FILES}" = *"examples/minimal/"* && "${VUE_TEMPLATE_TEST}" = minimal ]] && echo 'true' || echo 'false')
-      SKIP_FULL_BUILD=$([[ ! "${MODIFIED_FILES}" = *"examples/full-airbnb/"* && "${VUE_TEMPLATE_TEST}" = full-airbnb ]] && echo 'true' || echo 'false')
-      SKIP_FULL_AIRBNB_BUILD=$([[ ! "${MODIFIED_FILES}" = *"examples/full/"* && "${VUE_TEMPLATE_TEST}" = full ]] && echo 'true' || echo 'false')
+      SKIP_MINIMAL_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/minimal/"* && $VUE_TEMPLATE = minimal ]]
+      SKIP_FULL_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/full-airbnb/"* && $VUE_TEMPLATE = full-airbnb ]]
+      SKIP_FULL_AIRBNB_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/full/"* && $VUE_TEMPLATE = full ]]
 
-      echo -e "\\e[1;34mSkip minimal build? \\e[1;33m${SKIP_MINIMAL_BUILD}.\\e[0m"
-      echo -e "\\e[1;34mSkip full build? \\e[1;33m${SKIP_FULL_BUILD}.\\e[0m"
-      echo -e "\\e[1;34mSkip full-airbnb build? \\e[1;33m${SKIP_FULL_AIRBNB_BUILD}.\\e[0m"
-
-      if [[ $SKIP_MINIMAL_BUILD = 'true' || $SKIP_FULL_BUILD = 'true' || $SKIP_FULL_AIRBNB_BUILD = 'true' ]]; then
+      if [[ $SKIP_MINIMAL_BUILD || $SKIP_FULL_BUILD || $SKIP_FULL_AIRBNB_BUILD ]]; then
         echo -e "\\e[1;34mThen skip building.\\e[0m"
         exit 0
       fi
 
-      cd examples/${VUE_TEMPLATE_TEST}
+      cd examples/${VUE_TEMPLATE}
       tfold "Installing extension dependencies..." yarn
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping linting.\\e[0m"   || tfold "Linting..." yarn lint --fix       || exit $?
-      [[ ! "${VUE_TEMPLATE_TEST}" =~ ^full ]] && echo -e "\\e[1;34mSkipping prettying.\\e[0m" || tfold "Prettying..." yarn prettier:write || exit $?
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Linting..."   yarn lint --fix; fi
+      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..." yarn prettier:write; fi
       tfold "Building extension..." yarn build
     }
+    export -f dependabot_workflow
 
-  - |
     run_tests () {
+      export VUE_TEMPLATE=$1
+
       if [[ "${TRAVIS_BRANCH}" =~ ^dependabot ]]; then
         echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
-        dependabot_workflow
+        dependabot_workflow $VUE_TEMPLATE
         exit $?
       else
-        classical_workflow
+        classical_workflow $VUE_TEMPLATE
         exit $?
       fi
     }
+    export -f run_tests
 
 script:
-  - (run_tests)
+  - for VUE_TEMPLATE in $VUE_TEMPLATES; do (run_tests $VUE_TEMPLATE); done;
