@@ -67,7 +67,7 @@ before_install:
         set -e
 
         tfold "Working inside \\e[1;33m$PWD\\e[0m folder..." echo $PWD
-        tfold "Installing extension dependencies..." yarn
+        tfold "Installing extension dependencies..." yarn install --frozen-lockfile
         tfold "Building extension..." yarn build
         tfold "Testing version behavior" $TRAVIS_BUILD_DIR/tests/test_version.sh
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
@@ -90,6 +90,9 @@ before_install:
       }
     export -f create_extension_workflow
 
+install:
+  - yarn install --frozen-lockfile
+
 script:
   - |
     if [[ "${TRAVIS_BRANCH}" =~ ^dependabot ]]; then
@@ -102,8 +105,8 @@ script:
         cd $TRAVIS_BUILD_DIR/examples/$VUE_TEMPLATE
         extension_workflow
       else
-        echo -e "\\e[1;34mRunning tests for global project.\\e[0m"
-        yarn
+        echo -e "\\e[1;34mRunning tests for global project...\\e[0m"
+        exit 0 # Actually there is nothing to tests :shrug:
       fi
 
       exit $?
