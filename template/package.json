@@ -27,20 +27,20 @@
     {{#axios}}"axios": "^0.18.0",{{/axios}}
     {{#router}}"vue-router": "^3.0.1",{{/router}}
     {{#store}}"vuex": "^3.0.1",{{/store}}
-    "vue": "^2.5.13"
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     {{#lint}}
-    "babel-eslint": "^8.2.5",
-    "eslint": "^5.0.1",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.4.0",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-vue": "^4.5.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-vue": "^4.7.1",
     {{#if_eq lintConfig "standard"}}
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^6.0.1",
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
@@ -50,7 +50,7 @@
     {{/if_eq}}
     {{/lint}}
     {{#prettier}}
-    "prettier": "^1.13.5",
+    "prettier": "^1.14.2",
     {{#if_eq prettierHook "prettyQuick"}}
     "husky": "^0.14.3",
     "pretty-quick": "^1.6.0",
@@ -60,27 +60,27 @@
     "precise-commits": "^1.0.2",
     {{/if_eq}}
     {{#lint}}
-    "eslint-plugin-prettier": "^2.6.1",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-config-prettier": "^3.0.1",
     {{/lint}}
     {{/prettier}}
-    "@types/chrome": "^0.0.69",
-    "@babel/core": "^7.0.0-beta.51",
-    "@babel/preset-env": "^7.0.0-beta.51",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0-beta.51",
+    "@types/chrome": "^0.0.72",
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0-rc.1",
     "babel-loader": "^8.0.0-beta.4",
-    "copy-webpack-plugin": "^4.0.1",
-    "cross-env": "^5.1.6",
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
-    "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^7.0.1",
-    "vue-loader": "^15.2.0",
-    "vue-template-compiler": "^2.5.13",
-    "webpack": "^4.14.0",
-    "webpack-chrome-extension-reloader": "^0.6.7",
-    "webpack-cli": "^3.0.8",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.4.0",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.16.5",
+    "webpack-chrome-extension-reloader": "^0.8.3",
+    "webpack-cli": "^3.1.0",
     "webpack-shell-plugin": "^0.5.0",
     "zip-folder": "^1.0.0"
   }
