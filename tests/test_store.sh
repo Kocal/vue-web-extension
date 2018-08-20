@@ -14,19 +14,19 @@ test -f src/store/index.js
 test -f src/store/mutation-types.js
 test -f src/store/mutations.js
 
-if ! grep -ql "^import store from './store'$" src/background.js; then
+if ! grep -ql "import store from './store'" src/background.js; then
     echo "Line « import store from './store' » not found in src/background.js"
     cat src/background.js
     exit 2
 fi;
 
-if ! grep -ql "^import store from '../store'$" src/popup/popup.js; then
+if ! grep -ql "import store from '../store'" src/popup/popup.js; then
     echo "Line « import store from '../store' » not found in src/popup/popup.js"
     cat src/popup/popup.js
     exit 2
 fi;
 
-if ! grep -ql "^[[:space:]][[:space:]]store,$" src/popup/popup.js; then
+if ! grep -ql "[[:space:]][[:space:]]store," src/popup/popup.js; then
     echo "Line « store, » not found in src/popup/popup.js"
     cat src/popup/popup.js
     exit 2

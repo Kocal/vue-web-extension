@@ -63,60 +63,51 @@ before_install:
 
   - |
     # Setup jsdoc-vuejs bash utils
-    classical_workflow () {
-      set -e
-      export VUE_TEMPLATE=$1
+      extension_workflow () {
+        set -e
 
-      cd tests
-      tfold "Creating extension..." vue init .. extension-${VUE_TEMPLATE} && cd extension-${VUE_TEMPLATE}
-      tfold "Installing extension dependencies..." yarn
-      tfold "Building extension..." yarn build
-      tfold "Testing version behavior" ../test_version.sh
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing options..."    ../test_options.sh; fi
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing axios..."      ../test_axios.sh; fi
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing vue-router..." ../test_router.sh; fi
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Testing vuex..."       ../test_store.sh; fi
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
-    }
-    export -f classical_workflow
+        tfold "Working inside \\e[1;33m$PWD\\e[0m folder..." echo $PWD
+        tfold "Installing extension dependencies..." yarn
+        tfold "Building extension..." yarn build
+        tfold "Testing version behavior" $TRAVIS_BUILD_DIR/tests/test_version.sh
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing options..."    $TRAVIS_BUILD_DIR/tests/test_options.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing axios..."      $TRAVIS_BUILD_DIR/tests/test_axios.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vue-router..." $TRAVIS_BUILD_DIR/tests/test_router.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vuex..."       $TRAVIS_BUILD_DIR/tests/test_store.sh; fi
+      }
+      export -f extension_workflow
 
-    dependabot_workflow () {
-      set -e
-      export VUE_TEMPLATE=$1
+      create_extension_workflow () {
+        set -e
+        export VUE_TEMPLATE=$1
 
-      MODIFIED_FILES=$(git --no-pager diff --name-only origin/master)
-
-      SKIP_MINIMAL_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/minimal/"* && $VUE_TEMPLATE = minimal ]]
-      SKIP_FULL_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/full-airbnb/"* && $VUE_TEMPLATE = full-airbnb ]]
-      SKIP_FULL_AIRBNB_BUILD=[[ ! "${MODIFIED_FILES}" = *"examples/full/"* && $VUE_TEMPLATE = full ]]
-
-      if [[ $SKIP_MINIMAL_BUILD || $SKIP_FULL_BUILD || $SKIP_FULL_AIRBNB_BUILD ]]; then
-        echo -e "\\e[1;34mThen skip building.\\e[0m"
-        exit 0
-      fi
-
-      cd examples/${VUE_TEMPLATE}
-      tfold "Installing extension dependencies..." yarn
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Linting..."   yarn lint --fix; fi
-      if [[ "${VUE_TEMPLATE}" =~ ^full ]]; then tfold "Prettying..." yarn prettier:write; fi
-      tfold "Building extension..." yarn build
-    }
-    export -f dependabot_workflow
-
-    run_tests () {
-      export VUE_TEMPLATE=$1
-
-      if [[ "${TRAVIS_BRANCH}" =~ ^dependabot ]]; then
-        echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
-        dependabot_workflow $VUE_TEMPLATE
-        exit $?
-      else
-        classical_workflow $VUE_TEMPLATE
-        exit $?
-      fi
-    }
-    export -f run_tests
+        cd $TRAVIS_BUILD_DIR/tests
+        tfold "Creating extension following $VUE_TEMPLATE scenario..." vue init .. extension-$VUE_TEMPLATE &&
+        cd $TRAVIS_BUILD_DIR/tests/extension-$VUE_TEMPLATE
+        extension_workflow
+      }
+    export -f create_extension_workflow
 
 script:
-  - for VUE_TEMPLATE in $VUE_TEMPLATES; do (run_tests $VUE_TEMPLATE); done;
+  - |
+    if [[ "${TRAVIS_BRANCH}" =~ ^dependabot ]]; then
+      echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
+
+      export VUE_TEMPLATE=$(git --no-pager diff --name-only origin/master | grep "examples" | tail -n 1 | cut -d "/" -f 2)
+
+      if [[ "${VUE_TEMPLATES}" = *"$VUE_TEMPLATE"* ]]; then
+          echo -e "\\e[1;34mRunning tests for \"$VUE_TEMPLATE\" example...\\e[0m"
+        cd $TRAVIS_BUILD_DIR/examples/$VUE_TEMPLATE
+        extension_workflow
+      else
+        echo -e "\\e[1;34mRunning tests for global project.\\e[0m"
+        yarn
+      fi
+
+      exit $?
+    else
+      for VUE_TEMPLATE in $VUE_TEMPLATES; do create_extension_workflow $VUE_TEMPLATE; done;
+      exit $?
+    fi
