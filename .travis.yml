@@ -65,9 +65,7 @@ install:
       export VUE_TEMPLATE=$1
 
       cd tests
-      vue init .. extension-${VUE_TEMPLATE}
-
-      cd extension-${VUE_TEMPLATE}
+      tfold "Creating extension..." vue init .. extension-${VUE_TEMPLATE} && cd extension-${VUE_TEMPLATE}
       tfold "Installing extension dependencies..." yarn
       tfold "Building extension..." yarn build
       tfold "Testing version behavior" ../test_version.sh
