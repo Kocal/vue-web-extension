@@ -4,7 +4,7 @@ const scenarios = [
   'minimal'
 ]
 
-const index = scenarios.indexOf(process.env.VUE_TEMPLATE_TEST)
+const index = scenarios.indexOf(process.env.VUE_TEMPLATE);
 const isTest = exports.isTest = index !== -1
 const scenario = isTest && require(`./${scenarios[index]}.json`)
 
