@@ -1,0 +1,40 @@
+environment:
+  nodejs_version: "8"
+  VUE_TEMPLATES: '@("minimal", "full", "full-airbnb")'
+
+cache:
+  - node_modules
+    - examples/full/node_modules
+    - examples/full-airbnb/node_modules
+    - examples/minimal/node_modules
+    - '%APPDATA%\npm-cache'
+    - '%USERPROFILE%\.npm'
+    - '%USERPROFILE%\.cache'
+
+init:
+  - git remote set-branches --add origin master
+  - git fetch
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Module -Name PSWriteColor
+  - npm install -g yarn vue-cli
+  - yarn install --frozen-lockfile
+
+test_script:
+  - ps: >-
+      function Create-Extension-Workflow() {
+        Param($Template)
+
+        cd "$($env:APPVEYOR_BUILD_FOLDER)/tests"
+        Write-Color "Creating extension following ", $Template, " scenario..." -Color White, Yellow, White
+        vue init .. "extension-$($Template)"
+        cd "extension-$($Template)"
+      }
+
+      foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES) {
+        create_extension_workflow -Template $VUE_TEMPLATE
+        exit $?
+      }
+
+build: off
