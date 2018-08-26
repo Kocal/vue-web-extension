@@ -1,5 +1,6 @@
 # vue-web-extension-boilerplate
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/74679ac90f1d4479976f418b2faecb3a)](https://app.codacy.com/app/kocal/vue-web-extension?utm_source=github.com&utm_medium=referral&utm_content=Kocal/vue-web-extension&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.org/Kocal/vue-web-extension.svg?branch=master)](https://travis-ci.org/Kocal/vue-web-extension)
 
 This template allows you to quickly start a web extension containing:
