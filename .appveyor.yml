@@ -11,10 +11,6 @@ cache:
     - '%USERPROFILE%\.npm'
     - '%USERPROFILE%\.cache'
 
-init:
-  - git remote set-branches --add origin master
-  - git fetch
-
 install:
   - ps: Install-Product node $env:nodejs_version
   - ps: Install-Module -Name PSWriteColor
