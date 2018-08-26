@@ -1,5 +1,4 @@
 environment:
-  nodejs_version: "8"
   VUE_TEMPLATES: '@("minimal", "full", "full-airbnb")'
 
 cache:
@@ -12,7 +11,7 @@ cache:
     - '%USERPROFILE%\.cache'
 
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node 8
   - ps: Install-Module -Name PSWriteColor
   - npm install -g yarn vue-cli
   - yarn install --frozen-lockfile
