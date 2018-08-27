@@ -22,8 +22,6 @@ test_script:
       $ErrorActionPreference = "Stop"
 
       function Test-Extension() {
-        $ErrorActionPreference = "Stop"
-
         Write-Color "Working inside ", (Get-Location).path, " folder..." -Color White, Yellow, White
 
         Write-Color "[$($env:VUE_TEMPLATE)]", " Installing extension dependencies..." -Color Yellow, White
@@ -67,8 +65,6 @@ test_script:
       }
 
       function Create-Extension() {
-        $ErrorActionPreference = "Stop"
-
         Param($Template)
         $env:VUE_TEMPLATE = $Template
 
