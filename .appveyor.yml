@@ -74,8 +74,26 @@ test_script:
         Test-Extension
       }
 
-      foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES.split(" ")) {
-        Create-Extension -Template $VUE_TEMPLATE
+      function main() {
+        if($env:APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH.startsWith('dependabot')) {
+          Write-Color "Dependabot PR detected" -Color Yellow
+          $env:VUE_TEMPLATE = (git --no-pager diff --name-only origin/master | Select-String "examples" | Select-Object -Last 1 | Out-String | ForEach-Object { $_.Split('/')[1] })
+
+          if ($env:VUE_TEMPLATE -like "*$env:VUE_TEMPLATE*") {
+            Write-Color "Running tests for $($env:VUE_TEMPLATE) example..." -Color Yellow
+            cd "$($env:APPVEYOR_BUILD_FOLDER)/examples/$($env:VUE_TEMPLATE)"
+            Test-Extension
+          } else {
+            Write-Color "Nothing to tests for global project..." -Color Orange
+            exit 0
+          }
+        } else {
+          foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES.split(" ")) {
+            Create-Extension -Template $VUE_TEMPLATE
+          }
+        }
       }
+
+      main()
 
 build: off

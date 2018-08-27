@@ -101,7 +101,7 @@ script:
       export VUE_TEMPLATE=$(git --no-pager diff --name-only origin/master | grep "examples" | tail -n 1 | cut -d "/" -f 2)
 
       if [[ "${VUE_TEMPLATES}" = *"$VUE_TEMPLATE"* ]]; then
-          echo -e "\\e[1;34mRunning tests for \"$VUE_TEMPLATE\" example...\\e[0m"
+        echo -e "\\e[1;34mRunning tests for \"$VUE_TEMPLATE\" example...\\e[0m"
         cd $TRAVIS_BUILD_DIR/examples/$VUE_TEMPLATE
         test_extension
       else
