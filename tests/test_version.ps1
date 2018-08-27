@@ -7,7 +7,7 @@ Write-Host "Checking version behavior..."
 
 Write-Host "Upgrade version then build..."
 yarn version --new-version major --no-git-tag-version
-yarn build --display errors-only
+yarn build --silent 2> $null
 
 Write-Host "Version should be updated"
 (Get-Content './src/manifest.json' | ConvertFrom-Json).version | Assert-Null
