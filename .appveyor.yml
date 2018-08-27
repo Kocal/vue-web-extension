@@ -20,6 +20,7 @@ test_script:
   - ps: >-
       function Create-Extension-Workflow() {
         Param($Template)
+        $env:VUE_TEMPLATE = $Template
 
         cd "$($env:APPVEYOR_BUILD_FOLDER)/tests"
         Write-Color "Creating extension following ", $Template, " scenario..." -Color White, Yellow, White
