@@ -21,10 +21,10 @@ test_script:
       function Test-Extension() {
         Write-Color "Working inside ", (Get-Location).path, " folder..." -Color White, Yellow, White
 
-        Write-Host "Installing extension dependencies..."
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Installing extension dependencies..." -Color Yellow, White
         yarn install --frozen-lockfile
 
-        Write-Host "Building extension..."
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Building extension..." -Color Yellow, White
         yarn build
       }
 
@@ -33,7 +33,7 @@ test_script:
         $env:VUE_TEMPLATE = $Template
 
         cd "$($env:APPVEYOR_BUILD_FOLDER)/tests"
-        Write-Color "Creating extension following ", $Template, " scenario..." -Color White, Yellow, White
+        Write-Color "[$($env:VUE_TEMPLATE)]", "Creating extension following ", $Template, " scenario..." -Color Yellow, White, Yellow, White
         vue init .. "extension-$($Template)"
 
         cd "extension-$($Template)"
