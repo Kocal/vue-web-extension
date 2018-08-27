@@ -1,5 +1,5 @@
 environment:
-  VUE_TEMPLATES: '@("minimal", "full", "full-airbnb")'
+  VUE_TEMPLATES: "minimal full full-airbnb"
 
 cache:
   - node_modules
@@ -27,7 +27,7 @@ test_script:
         cd "extension-$($Template)"
       }
 
-      foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES) {
+      foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES.split(" ")) {
         Create-Extension-Workflow -Template $VUE_TEMPLATE
         exit $?
       }
