@@ -13,6 +13,7 @@ cache:
 install:
   - ps: Install-Product node 8
   - ps: Install-Module -Name PSWriteColor
+  - ps: Install-Module -Name Assert
   - npm install -g yarn vue-cli
   - yarn install --frozen-lockfile
 
@@ -26,6 +27,9 @@ test_script:
 
         Write-Color "[$($env:VUE_TEMPLATE)]", " Building extension..." -Color Yellow, White
         yarn build
+
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Testing version behavior..." -Color Yellow, White
+        ./tests/test_version.ps1
       }
 
       function Create-Extension() {

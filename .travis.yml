@@ -69,7 +69,7 @@ before_install:
         tfold "Working inside \\e[1;33m$PWD\\e[0m folder..." echo $PWD
         tfold "Installing extension dependencies..." yarn install --frozen-lockfile
         tfold "Building extension..." yarn build
-        tfold "Testing version behavior" $TRAVIS_BUILD_DIR/tests/test_version.sh
+        tfold "Testing version behavior..." $TRAVIS_BUILD_DIR/tests/test_version.sh
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing options..."    $TRAVIS_BUILD_DIR/tests/test_options.sh; fi
