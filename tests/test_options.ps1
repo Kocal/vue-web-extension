@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 Test-Path src/options/options.js | Assert-True
 Test-Path src/options/options.html | Assert-True
 Test-Path src/options/App.vue | Assert-True

@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 Test-Path src/store/actions.js | Assert-True
 Test-Path src/store/getters.js | Assert-True
 Test-Path src/store/index.js | Assert-True

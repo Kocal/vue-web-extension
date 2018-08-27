@@ -19,8 +19,6 @@ install:
 
 test_script:
   - ps: >-
-      $ErrorActionPreference = "Stop"
-
       function Test-Extension() {
         Write-Color "Working inside ", (Get-Location).path, " folder..." -Color White, Yellow, White
 

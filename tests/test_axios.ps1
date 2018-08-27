@@ -1,8 +1,8 @@
-$content = (Get-Content package.json)
+$ErrorActionPreference = "Stop"
 
-if ($content | Assert-NotContain "axios")
+if (Get-Content package.json | Assert-NotContain "axios")
 {
     Write-Color "Axios not found in package.json" -Color Red
-    echo $content
+    Get-Content package.json
     exit 1
 }

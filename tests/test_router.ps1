@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 Test-Path src/popup/router/pages/Index.vue | Assert-True
 Test-Path src/popup/router/index.js | Assert-True
 Test-Path src/popup/router/routes.js | Assert-True
