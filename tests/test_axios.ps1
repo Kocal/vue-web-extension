@@ -1,8 +1,7 @@
 $ErrorActionPreference = "Stop"
 
-if (Get-Content package.json | Assert-NotContain "axios")
+if (!(Get-Content package.json | Out-String) -like "*axios*")
 {
-    Write-Color "Axios not found in package.json" -Color Red
+    throw "Axios not found in package.json"
     Get-Content package.json
-    exit 1
 }
