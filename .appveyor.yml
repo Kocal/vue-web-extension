@@ -94,6 +94,6 @@ test_script:
         }
       }
 
-      main()
+      main
 
 build: off
