@@ -2,6 +2,7 @@
   "name": "minimal",
   "description": "Extension generated with Kocal/vue-web-extension",
   "author": "Travis",
+  "license": "MIT",
   "options": false,
   "router": false,
   "store": false,

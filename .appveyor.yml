@@ -1,0 +1,99 @@
+environment:
+  VUE_TEMPLATES: "minimal full full-airbnb"
+
+cache:
+  - node_modules
+  - examples\full\node_modules
+  - examples\full-airbnb\node_modules
+  - examples\minimal\node_modules
+  - '%APPDATA%\npm-cache'
+  - '%USERPROFILE%\.npm'
+  - '%USERPROFILE%\.cache'
+
+install:
+  - ps: Install-Product node 8
+  - ps: Install-Module -Name PSWriteColor
+  - ps: Install-Module -Name Assert
+  - npm install -g yarn vue-cli
+  - yarn install --frozen-lockfile --silent 2> $null
+
+test_script:
+  - ps: >-
+      function Test-Extension() {
+        Write-Color "Working inside ", (Get-Location).path, " folder..." -Color White, Yellow, White
+
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Installing extension dependencies..." -Color Yellow, White
+        yarn install --frozen-lockfile --silent 2> $null
+
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Building extension..." -Color Yellow, White
+        yarn build --silent 2> $null
+
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Testing version behavior..." -Color Yellow, White
+        Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_version.ps1"
+
+        if ($env:VUE_TEMPLATE.startsWith('full')) {
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Linting..." -Color Yellow, White
+          yarn lint --fix
+        }
+
+        if ($env:VUE_TEMPLATE.startsWith('full')) {
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Prettying..." -Color Yellow, White
+          yarn prettier:write
+        }
+
+        if ($env:VUE_TEMPLATE.startsWith('full')) {
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing options..." -Color Yellow, White
+          Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_options.ps1"
+        }
+
+        if ($env:VUE_TEMPLATE.startsWith('full')) {
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing axios..." -Color Yellow, White
+          Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_axios.ps1"
+        }
+
+        if ($env:VUE_TEMPLATE.startsWith('full')) {
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing vue-router..." -Color Yellow, White
+          Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_router.ps1"
+        }
+
+        if ($env:VUE_TEMPLATE.startsWith('full')) {
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing vuex..." -Color Yellow, White
+          Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_store.ps1"
+        }
+      }
+
+      function Create-Extension() {
+        Param($Template)
+        $env:VUE_TEMPLATE = $Template
+
+        cd "$($env:APPVEYOR_BUILD_FOLDER)/tests"
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Creating extension following ", $Template, " scenario..." -Color Yellow, White, Yellow, White
+        vue init .. "extension-$($Template)"
+
+        cd "extension-$($Template)"
+        Test-Extension
+      }
+
+      function Main() {
+        if($env:APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH.startsWith('dependabot')) {
+          Write-Color "Dependabot PR detected" -Color Yellow
+          $env:VUE_TEMPLATE = (git --no-pager diff --name-only origin/master | Select-String "examples" | Select-Object -Last 1 | Out-String | ForEach-Object { $_.Split('/')[1] })
+
+          if ($env:VUE_TEMPLATE -like "*$env:VUE_TEMPLATE*") {
+            Write-Color "Running tests for $($env:VUE_TEMPLATE) example..." -Color Yellow
+            cd "$($env:APPVEYOR_BUILD_FOLDER)/examples/$($env:VUE_TEMPLATE)"
+            Test-Extension
+          } else {
+            Write-Color "Nothing to tests for global project..." -Color Orange
+            exit 0
+          }
+        } else {
+          foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES.split(" ")) {
+            Create-Extension -Template $VUE_TEMPLATE
+          }
+        }
+      }
+
+      Main
+
+build: off

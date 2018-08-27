@@ -2,6 +2,7 @@
   "name": "full",
   "description": "Extension generated with Kocal/vue-web-extension",
   "author": "Travis",
+  "license": "MIT",
   "options": true,
   "router": true,
   "store": true,

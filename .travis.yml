@@ -63,13 +63,13 @@ before_install:
 
   - |
     # Setup jsdoc-vuejs bash utils
-      extension_workflow () {
+      test_extension () {
         set -e
 
         tfold "Working inside \\e[1;33m$PWD\\e[0m folder..." echo $PWD
         tfold "Installing extension dependencies..." yarn install --frozen-lockfile
         tfold "Building extension..." yarn build
-        tfold "Testing version behavior" $TRAVIS_BUILD_DIR/tests/test_version.sh
+        tfold "Testing version behavior..." $TRAVIS_BUILD_DIR/tests/test_version.sh
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing options..."    $TRAVIS_BUILD_DIR/tests/test_options.sh; fi
@@ -77,18 +77,18 @@ before_install:
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vue-router..." $TRAVIS_BUILD_DIR/tests/test_router.sh; fi
         if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vuex..."       $TRAVIS_BUILD_DIR/tests/test_store.sh; fi
       }
-      export -f extension_workflow
+      export -f test_extension
 
-      create_extension_workflow () {
+      create_extension () {
         set -e
         export VUE_TEMPLATE=$1
 
         cd $TRAVIS_BUILD_DIR/tests
         tfold "Creating extension following $VUE_TEMPLATE scenario..." vue init .. extension-$VUE_TEMPLATE &&
         cd $TRAVIS_BUILD_DIR/tests/extension-$VUE_TEMPLATE
-        extension_workflow
+        test_extension
       }
-    export -f create_extension_workflow
+    export -f create_extension
 
 install:
   - yarn install --frozen-lockfile
@@ -101,9 +101,9 @@ script:
       export VUE_TEMPLATE=$(git --no-pager diff --name-only origin/master | grep "examples" | tail -n 1 | cut -d "/" -f 2)
 
       if [[ "${VUE_TEMPLATES}" = *"$VUE_TEMPLATE"* ]]; then
-          echo -e "\\e[1;34mRunning tests for \"$VUE_TEMPLATE\" example...\\e[0m"
+        echo -e "\\e[1;34mRunning tests for \"$VUE_TEMPLATE\" example...\\e[0m"
         cd $TRAVIS_BUILD_DIR/examples/$VUE_TEMPLATE
-        extension_workflow
+        test_extension
       else
         echo -e "\\e[1;34mRunning tests for global project...\\e[0m"
         exit 0 # Actually there is nothing to tests :shrug:
@@ -111,6 +111,6 @@ script:
 
       exit $?
     else
-      for VUE_TEMPLATE in $VUE_TEMPLATES; do create_extension_workflow $VUE_TEMPLATE; done;
+      for VUE_TEMPLATE in $VUE_TEMPLATES; do create_extension $VUE_TEMPLATE; done;
       exit $?
     fi
