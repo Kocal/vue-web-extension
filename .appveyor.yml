@@ -18,19 +18,32 @@ install:
 
 test_script:
   - ps: >-
-      function Create-Extension-Workflow() {
+      function Test-Extension() {
+        Write-Color "Working inside ", (Get-Location).path, " folder..." -Color White, Yellow, White
+
+        Write-Host "Installing extension dependencies..."
+        yarn install --frozen-lockfile
+
+        Write-Host "Building extension..."
+        yarn build
+      }
+
+      function Create-Extension() {
         Param($Template)
         $env:VUE_TEMPLATE = $Template
 
         cd "$($env:APPVEYOR_BUILD_FOLDER)/tests"
         Write-Color "Creating extension following ", $Template, " scenario..." -Color White, Yellow, White
         vue init .. "extension-$($Template)"
+
         cd "extension-$($Template)"
+        Test-Extension
       }
 
       foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES.split(" ")) {
-        Create-Extension-Workflow -Template $VUE_TEMPLATE
-        exit $?
+        Create-Extension -Template $VUE_TEMPLATE
       }
+
+      exit $?
 
 build: off
