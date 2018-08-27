@@ -19,7 +19,11 @@ install:
 
 test_script:
   - ps: >-
+      $ErrorActionPreference = "Stop"
+
       function Test-Extension() {
+        $ErrorActionPreference = "Stop"
+
         Write-Color "Working inside ", (Get-Location).path, " folder..." -Color White, Yellow, White
 
         Write-Color "[$($env:VUE_TEMPLATE)]", " Installing extension dependencies..." -Color Yellow, White
@@ -32,37 +36,39 @@ test_script:
         Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_version.ps1"
 
         if ($env:VUE_TEMPLATE.startsWith('full')) {
-          Write-Color "[$($env:VUE_TEMPLATE)]", "Linting..." -Color Yellow, White
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Linting..." -Color Yellow, White
           yarn lint --fix
         }
 
         if ($env:VUE_TEMPLATE.startsWith('full')) {
-          Write-Color "[$($env:VUE_TEMPLATE)]", "Prettying..." -Color Yellow, White
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Prettying..." -Color Yellow, White
           yarn prettier:write
         }
 
         if ($env:VUE_TEMPLATE.startsWith('full')) {
-          Write-Color "[$($env:VUE_TEMPLATE)]", "Testing options..." -Color Yellow, White
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing options..." -Color Yellow, White
           Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_options.ps1"
         }
 
         if ($env:VUE_TEMPLATE.startsWith('full')) {
-          Write-Color "[$($env:VUE_TEMPLATE)]", "Testing axios..." -Color Yellow, White
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing axios..." -Color Yellow, White
           Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_axios.ps1"
         }
 
         if ($env:VUE_TEMPLATE.startsWith('full')) {
-          Write-Color "[$($env:VUE_TEMPLATE)]", "Testing vue-router..." -Color Yellow, White
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing vue-router..." -Color Yellow, White
           Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_router.ps1"
         }
 
         if ($env:VUE_TEMPLATE.startsWith('full')) {
-          Write-Color "[$($env:VUE_TEMPLATE)]", "Testing vuex..." -Color Yellow, White
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing vuex..." -Color Yellow, White
           Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_store.ps1"
         }
       }
 
       function Create-Extension() {
+        $ErrorActionPreference = "Stop"
+
         Param($Template)
         $env:VUE_TEMPLATE = $Template
 
