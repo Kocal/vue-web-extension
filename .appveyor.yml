@@ -29,7 +29,7 @@ test_script:
         yarn build
 
         Write-Color "[$($env:VUE_TEMPLATE)]", " Testing version behavior..." -Color Yellow, White
-        ./tests/test_version.ps1
+        Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_version.ps1"
       }
 
       function Create-Extension() {
@@ -37,7 +37,7 @@ test_script:
         $env:VUE_TEMPLATE = $Template
 
         cd "$($env:APPVEYOR_BUILD_FOLDER)/tests"
-        Write-Color "[$($env:VUE_TEMPLATE)]", "Creating extension following ", $Template, " scenario..." -Color Yellow, White, Yellow, White
+        Write-Color "[$($env:VUE_TEMPLATE)]", " Creating extension following ", $Template, " scenario..." -Color Yellow, White, Yellow, White
         vue init .. "extension-$($Template)"
 
         cd "extension-$($Template)"
