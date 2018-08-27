@@ -15,7 +15,7 @@ install:
   - ps: Install-Module -Name PSWriteColor
   - ps: Install-Module -Name Assert
   - npm install -g yarn vue-cli
-  - yarn install --frozen-lockfile --silent
+  - yarn install --frozen-lockfile --silent 2> $null
 
 test_script:
   - ps: >-
@@ -23,10 +23,10 @@ test_script:
         Write-Color "Working inside ", (Get-Location).path, " folder..." -Color White, Yellow, White
 
         Write-Color "[$($env:VUE_TEMPLATE)]", " Installing extension dependencies..." -Color Yellow, White
-        yarn install --frozen-lockfile --silent
+        yarn install --frozen-lockfile --silent 2> $null
 
         Write-Color "[$($env:VUE_TEMPLATE)]", " Building extension..." -Color Yellow, White
-        yarn build --silent
+        yarn build --silent 2> $null
 
         Write-Color "[$($env:VUE_TEMPLATE)]", " Testing version behavior..." -Color Yellow, White
         Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_version.ps1"
