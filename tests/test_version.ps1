@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 Write-Host "Checking version behavior..."
 (Get-Content './src/manifest.json' | ConvertFrom-Json).version | Assert-Null
 (Get-Content './package.json' | ConvertFrom-Json).version | Assert-StringEqual -Expected "1.0.0"
