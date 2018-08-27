@@ -74,7 +74,7 @@ test_script:
         Test-Extension
       }
 
-      function main() {
+      function Main() {
         if($env:APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH.startsWith('dependabot')) {
           Write-Color "Dependabot PR detected" -Color Yellow
           $env:VUE_TEMPLATE = (git --no-pager diff --name-only origin/master | Select-String "examples" | Select-Object -Last 1 | Out-String | ForEach-Object { $_.Split('/')[1] })
@@ -94,6 +94,6 @@ test_script:
         }
       }
 
-      main
+      Main
 
 build: off
