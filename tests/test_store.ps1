@@ -6,30 +6,26 @@ Test-Path src/store/index.js | Assert-True
 Test-Path src/store/mutation-types.js | Assert-True
 Test-Path src/store/mutations.js | Assert-True
 
-if (Get-Content package.json | Assert-NotContain "vuex")
+if ((Get-Content package.json | String-Output) -like "*vuex*")
 {
-    echo "Vuex not found in package.json"
     Get-Content package.json
-    exit 1
+    throw "Vuex not found in package.json"
 }
 
-if (Get-Content src/background.js | Assert-NotContain "import store from './store'")
+if ((Get-Content src/background.js | String-Output) -like "*import store from './store'*")
 {
-    echo "Line « import store from './store' » not found in src/background.js"
     Get-Content src/background.js
-    exit 2
+    throw "Line « import store from './store' » not found in src/background.js"
 }
 
-if (Get-Content src/popup/popup.js | Assert-NotContain "import store from '../store'")
+if ((Get-Content src/popup/popup.js | String-Output) -like "*import store from '../store'*")
 {
-    echo "Line « import store from '../store' » not found in src/popup/popup.js"
     Get-Content src/popup/popup.js
-    exit 2
+    throw "Line « import store from '../store' » not found in src/popup/popup.js"
 }
 
-if (Get-Content src/popup/popup.js | Assert-NotContain "store,")
+if ((Get-Content src/popup/popup.js | String-Output) -like "*store,*")
 {
-    echo "Line « store, » not found in src/popup/popup.js"
     Get-Content src/popup/popup.js
-    exit 2
+    throw "Line « store, » not found in src/popup/popup.js"
 }
