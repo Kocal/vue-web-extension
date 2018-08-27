@@ -28,7 +28,7 @@ test_script:
       }
 
       foreach($VUE_TEMPLATE in $env:VUE_TEMPLATES) {
-        create_extension_workflow -Template $VUE_TEMPLATE
+        Create-Extension-Workflow -Template $VUE_TEMPLATE
         exit $?
       }
 
