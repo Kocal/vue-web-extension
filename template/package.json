@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "{{ description }}",
   "author": "{{ author }}",
+  {{#if license}}"license": "{{ license }}",{{/if}}
   "scripts": {
     {{#lint}}
     "lint": "eslint --ext .js,.vue src",

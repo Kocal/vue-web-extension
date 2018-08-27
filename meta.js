@@ -26,6 +26,11 @@ module.exports = {
       "type": "string",
       "message": "Author"
     },
+    "license": {
+      "when": "isNotTest",
+      "type": "string",
+      "message": "License"
+    },
     "options": {
       "when": "isNotTest",
       "type": "confirm",
