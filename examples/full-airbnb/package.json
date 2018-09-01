@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "precommit": "precise-commits",
-    "prettier": "prettier 'src/**/*.{js,vue}'",
+    "prettier": "prettier \"src/**/*.{js,vue}\"",
     "prettier:write": "npm run prettier -- --write",
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
