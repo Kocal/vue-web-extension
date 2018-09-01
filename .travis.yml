@@ -95,7 +95,7 @@ install:
 
 script:
   - |
-    if [[ "${TRAVIS_BRANCH}" =~ ^dependabot ]]; then
+    if [[ "${TRAVIS_PULL_REQUEST_BRANCH}" =~ ^dependabot ]]; then
       echo -e "\\e[1;34mDependabot PR detected.\\e[0m"
 
       export VUE_TEMPLATE=$(git --no-pager diff --name-only origin/master | grep "examples" | tail -n 1 | cut -d "/" -f 2)
