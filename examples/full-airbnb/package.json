@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Vue.js web extension",
   "author": "Hugo Alliaume <kocal@live.fr>",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "precommit": "precise-commits",
