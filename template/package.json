@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     {{#lint}}
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "^9.0.0",
     "eslint": "^5.4.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.0",
@@ -66,10 +66,10 @@
     {{/lint}}
     {{/prettier}}
     "@types/chrome": "^0.0.72",
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0-rc.1",
-    "babel-loader": "^8.0.0-beta.4",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
