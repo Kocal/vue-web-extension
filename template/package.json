@@ -32,17 +32,17 @@
   },
   "devDependencies": {
     {{#lint}}
-    "babel-eslint": "^8.2.6",
-    "eslint": "^5.4.0",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.6.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.0",
-    "eslint-plugin-vue": "^4.7.1",
+    "eslint-plugin-vue": "^5.0.0-beta.3",
     {{#if_eq lintConfig "standard"}}
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-node": "^7.0.1",
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
     "eslint-config-airbnb-base": "^13.0.0",
@@ -66,10 +66,10 @@
     {{/lint}}
     {{/prettier}}
     "@types/chrome": "^0.0.72",
-    "@babel/core": "^7.0.0-rc.1",
-    "@babel/preset-env": "^7.0.0-rc.1",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0-rc.1",
-    "babel-loader": "^8.0.0-beta.4",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
