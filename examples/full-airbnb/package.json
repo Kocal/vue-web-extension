@@ -42,7 +42,7 @@
     "eslint-plugin-vue": "^5.0.0-beta.3",
     "file-loader": "^1.1.11",
     "husky": "^0.14.3",
-    "mini-css-extract-plugin": "^0.4.1",
+    "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
     "precise-commits": "^1.0.2",
     "prettier": "^1.14.2",
