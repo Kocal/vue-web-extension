@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/Kocal/vue-web-extension/compare/v1.6.0...v1.7.0) (2018-10-14)
+
+
+### Bug Fixes
+
+* **ci:** use TRAVIS_PULL_REQUEST_BRANCH env var ([870bc9b](https://github.com/Kocal/vue-web-extension/commit/870bc9b))
+
+
+### Features
+
+* **prompt:** add prompt for Mozilla Polyfill ([#335](https://github.com/Kocal/vue-web-extension/issues/335)) ([ec0277b](https://github.com/Kocal/vue-web-extension/commit/ec0277b))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/Kocal/vue-web-extension/compare/v1.5.0...v1.6.0) (2018-07-08)
 
