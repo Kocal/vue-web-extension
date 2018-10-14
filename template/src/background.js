@@ -1,3 +1,4 @@
+{{#if mozillaPolyfill}}global.browser = require('webextension-polyfill'){{/if}}
 {{#if store}}
 import store from './store'
 
