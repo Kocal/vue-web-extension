@@ -1,3 +1,5 @@
+{{#if mozillaPolyfill}}global.browser = require('webextension-polyfill'){{/if}}
+
 import Vue from 'vue'
 import App from './App'
 {{#if store}}import store from '../store'{{/if}}

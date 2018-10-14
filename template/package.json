@@ -25,6 +25,7 @@
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch"
   },
   "dependencies": {
+    {{#mozillaPolyfill}}"webextension-polyfill": "^0.3.1",{{/mozillaPolyfill}}
     {{#axios}}"axios": "^0.18.0",{{/axios}}
     {{#router}}"vue-router": "^3.0.1",{{/router}}
     {{#store}}"vuex": "^3.0.1",{{/store}}
@@ -65,7 +66,11 @@
     "eslint-config-prettier": "^3.1.0",
     {{/lint}}
     {{/prettier}}
+    {{#mozillaPolyfill}}
+    "web-ext-types": "^2.1.0",
+    {{else}}
     "@types/chrome": "^0.0.74",
+    {{/mozillaPolyfill}}
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
