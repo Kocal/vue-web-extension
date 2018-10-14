@@ -37,6 +37,11 @@ module.exports = {
       type: 'string',
       message: 'License',
     },
+    mozillaPolyfill: {
+      when: 'isNotTest',
+      type: 'confirm',
+      message: "Use Mozilla's web-extension polyfill? (https://github.com/mozilla/webextension-polyfill)",
+    },
     options: {
       when: 'isNotTest',
       type: 'confirm',

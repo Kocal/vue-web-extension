@@ -3,6 +3,7 @@
   "description": "Extension generated with Kocal/vue-web-extension",
   "author": "Travis",
   "license": "MIT",
+  "mozillaPolyfill": false,
   "options": false,
   "router": false,
   "store": false,
