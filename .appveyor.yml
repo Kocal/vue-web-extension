@@ -42,6 +42,11 @@ test_script:
         }
 
         if ($env:VUE_TEMPLATE.startsWith('full')) {
+          Write-Color "[$($env:VUE_TEMPLATE)]", " Testing Web extension polyfill..." -Color Yellow, White
+          Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_web_extension_polyfill.ps1"
+        }
+
+        if ($env:VUE_TEMPLATE.startsWith('full')) {
           Write-Color "[$($env:VUE_TEMPLATE)]", " Testing options..." -Color Yellow, White
           Invoke-Expression "$($env:APPVEYOR_BUILD_FOLDER)/tests/test_options.ps1"
         }

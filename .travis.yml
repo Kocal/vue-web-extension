@@ -70,12 +70,13 @@ before_install:
         tfold "Installing extension dependencies..." yarn install --frozen-lockfile
         tfold "Building extension..." yarn build
         tfold "Testing version behavior..." $TRAVIS_BUILD_DIR/tests/test_version.sh
-        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Linting..."            yarn lint --fix; fi
-        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Prettying..."          yarn prettier:write; fi
-        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing options..."    $TRAVIS_BUILD_DIR/tests/test_options.sh; fi
-        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing axios..."      $TRAVIS_BUILD_DIR/tests/test_axios.sh; fi
-        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vue-router..." $TRAVIS_BUILD_DIR/tests/test_router.sh; fi
-        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vuex..."       $TRAVIS_BUILD_DIR/tests/test_store.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Linting..."                        yarn lint --fix; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Prettying..."                      yarn prettier:write; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing Web extension polyfill..." $TRAVIS_BUILD_DIR/tests/test_web_extension_polyfill.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing options..."                $TRAVIS_BUILD_DIR/tests/test_options.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing axios..."                  $TRAVIS_BUILD_DIR/tests/test_axios.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vue-router..."             $TRAVIS_BUILD_DIR/tests/test_router.sh; fi
+        if [[ "$VUE_TEMPLATE" =~ ^full ]]; then tfold "Testing vuex..."                   $TRAVIS_BUILD_DIR/tests/test_store.sh; fi
       }
       export -f test_extension
 
