@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/Kocal/vue-web-extension/compare/v1.7.0...v1.8.0) (2018-10-23)
+
+
+### Features
+
+* use EJS on html files, inject process.env.* vars ([#336](https://github.com/Kocal/vue-web-extension/issues/336)) ([8171f3e](https://github.com/Kocal/vue-web-extension/commit/8171f3e)), closes [/github.com/Kocal/vue-web-extension/issues/334#issuecomment-430491330](https://github.com//github.com/Kocal/vue-web-extension/issues/334/issues/issuecomment-430491330)
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/Kocal/vue-web-extension/compare/v1.6.0...v1.7.0) (2018-10-14)
 
