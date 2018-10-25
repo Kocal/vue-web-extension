@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ejs = require('ejs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -10,7 +11,7 @@ const config = {
   mode: process.env.NODE_ENV,
   context: __dirname + '/src',
   entry: {
-    'background': './background.js',
+    background: './background.js',
     'popup/popup': './popup/popup.js',
     'options/options': './options/options.js',
   },
@@ -60,12 +61,12 @@ const config = {
     }),
     new CopyWebpackPlugin([
       { from: 'icons', to: 'icons', ignore: ['icon.xcf'] },
-      { from: 'popup/popup.html', to: 'popup/popup.html' },
-      { from: 'options/options.html', to: 'options/options.html' },
+      { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
+      { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },
       {
         from: 'manifest.json',
         to: 'manifest.json',
-        transform: (content) => {
+        transform: content => {
           const jsonContent = JSON.parse(content);
           jsonContent.version = version;
 
@@ -94,9 +95,13 @@ if (config.mode === 'production') {
 }
 
 if (process.env.HMR === 'true') {
-  config.plugins = (config.plugins || []).concat([
-    new ChromeExtensionReloader(),
-  ]);
+  config.plugins = (config.plugins || []).concat([new ChromeExtensionReloader()]);
+}
+
+function transformHtml(content) {
+  return ejs.render(content.toString(), {
+    ...process.env,
+  });
 }
 
 module.exports = config;
