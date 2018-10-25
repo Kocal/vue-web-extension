@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <link rel="stylesheet" href="popup.css">
+  <% if (NODE_ENV === 'development') { %>
+  <!-- Load some resources only in development environment -->
+  <% } %>
 </head>
 <body>
   <div id="app">
