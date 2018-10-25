@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
-    "precommit": "pretty-quick --staged",
+    "precommit": "precise-commits",
     "prettier": "prettier \"src/**/*.{js,vue}\"",
     "prettier:write": "npm run prettier -- --write",
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
@@ -45,8 +45,8 @@
     "husky": "^0.14.3",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.9.3",
+    "precise-commits": "^1.0.2",
     "prettier": "^1.14.3",
-    "pretty-quick": "^1.8.0",
     "sass-loader": "^7.1.0",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.17",
