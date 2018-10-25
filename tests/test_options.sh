@@ -16,8 +16,8 @@ if ! grep -ql "'options/options': './options/options.js'," webpack.config.js ; t
     exit 2
 fi;
 
-if ! grep -ql "{ from: 'options/options.html', to: 'options/options.html' }," webpack.config.js ; then
-    echo "Line « { from: 'options/options.html', to: 'options/options.html' }, » not found in webpack.config.js"
+if ! grep -ql "{ from: 'options/options.html', to: 'options/options.html', transform: transformHtml }," webpack.config.js ; then
+zsh:1: command not found: q
     cat webpack.config.js
     exit 2
 fi;
