@@ -71,6 +71,7 @@
     {{else}}
     "@types/chrome": "^0.0.74",
     {{/mozillaPolyfill}}
+    "archiver": "^3.0.0",
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
@@ -88,7 +89,6 @@
     "webpack": "^4.20.2",
     "webpack-chrome-extension-reloader": "^0.8.3",
     "webpack-cli": "^3.1.2",
-    "webpack-shell-plugin": "^0.5.0",
-    "zip-folder": "^1.0.0"
+    "webpack-shell-plugin": "^0.5.0"
   }
 }
