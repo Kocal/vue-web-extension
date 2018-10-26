@@ -45,7 +45,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.0.0-beta.3",
     "file-loader": "^1.1.11",
-    "husky": "^0.14.3",
+    "husky": "^1.1.2",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.3",
