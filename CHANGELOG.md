@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.8.1"></a>
+## [1.8.1](https://github.com/Kocal/vue-web-extension/compare/v1.8.0...v1.8.1) (2018-10-26)
+
+
+### Bug Fixes
+
+* remove vulnerable "zip-folder" package for "archiver" ([#347](https://github.com/Kocal/vue-web-extension/issues/347)) ([a42d20f](https://github.com/Kocal/vue-web-extension/commit/a42d20f)), closes [#338](https://github.com/Kocal/vue-web-extension/issues/338)
+
+
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/Kocal/vue-web-extension/compare/v1.7.0...v1.8.0) (2018-10-23)
 
