@@ -6226,10 +6226,10 @@ watchpack@^1.5.0:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
-web-ext-types@^2.1.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/web-ext-types/-/web-ext-types-2.3.0.tgz#3d7e62d82f272e3d6056be2e0f92e8036651f7e0"
-  integrity sha512-a0tUp0fQXUgGH53TuXienngvqSkiNs3xDpSIA4U5+c+AfFiniNh+YMVrVcLgFTIXRyIeFkpYZe8IzwiuULomAg==
+web-ext-types@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/web-ext-types/-/web-ext-types-3.0.0.tgz#c161b48bc1b44653c5749e0e7aa20ce917570c3c"
+  integrity sha512-LTAR/L+xgNRCSW8BxXcSQbOJkwOskwLpIJStiQKPHNA9MAjSyn2xSkHzHxbCkaKvQekBoOAF9PE/byMytfEvJA==
 
 webextension-polyfill@^0.3.1:
   version "0.3.1"
