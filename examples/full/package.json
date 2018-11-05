@@ -47,7 +47,7 @@
     "file-loader": "^1.1.11",
     "husky": "^0.14.3",
     "mini-css-extract-plugin": "^0.4.4",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.10.0",
     "prettier": "^1.14.3",
     "pretty-quick": "^1.8.0",
     "sass-loader": "^7.1.0",
