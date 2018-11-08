@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/Kocal/vue-web-extension/compare/v1.8.1...v1.9.0) (2018-11-08)
+
+
+### Features
+
+* `browser` object is now accessible in Vue templates by using `$browser` ([#357](https://github.com/Kocal/vue-web-extension/issues/357)) ([83b76fe](https://github.com/Kocal/vue-web-extension/commit/83b76fe))
+
+
+
 <a name="1.8.1"></a>
 ## [1.8.1](https://github.com/Kocal/vue-web-extension/compare/v1.8.0...v1.8.1) (2018-10-26)
 
