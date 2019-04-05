@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const ejs = require('ejs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -11,7 +10,7 @@ const config = {
   mode: process.env.NODE_ENV,
   context: __dirname + '/src',
   entry: {
-    background: './background.js',
+    'background': './background.js',
     'popup/popup': './popup/popup.js',
     'options/options': './options/options.js',
   },
@@ -55,6 +54,9 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      global: 'window',
+    }),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -66,7 +68,7 @@ const config = {
       {
         from: 'manifest.json',
         to: 'manifest.json',
-        transform: content => {
+        transform: (content) => {
           const jsonContent = JSON.parse(content);
           jsonContent.version = version;
 
@@ -78,9 +80,6 @@ const config = {
         },
       },
     ]),
-    new WebpackShellPlugin({
-      onBuildEnd: ['node scripts/remove-evals.js'],
-    }),
   ],
 };
 
@@ -95,7 +94,9 @@ if (config.mode === 'production') {
 }
 
 if (process.env.HMR === 'true') {
-  config.plugins = (config.plugins || []).concat([new ChromeExtensionReloader()]);
+  config.plugins = (config.plugins || []).concat([
+    new ChromeExtensionReloader(),
+  ]);
 }
 
 function transformHtml(content) {
