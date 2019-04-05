@@ -1,6 +1,20 @@
 # Change Log
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+    
+<a name="1.10.0"></a>
+
+# [1.10.0](https://github.com/Kocal/vue-web-extension/compare/v1.9.0...v1.10.0) (2019-04-05)
+
+### Bug Fixes
+
+- Handle `eval` removal properly, remove "remove-evals" script and WebpackShellPlugin ([#398](https://github.com/Kocal/vue-web-extension/issues/398)) ([ab1ce52](https://github.com/Kocal/vue-web-extension/commit/ab1ce52))
+
+### Features
+
+- add core-js dependency ([#381](https://github.com/Kocal/vue-web-extension/issues/381)) ([01066ba](https://github.com/Kocal/vue-web-extension/commit/01066ba))
+
+
 
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/Kocal/vue-web-extension/compare/v1.8.1...v1.9.0) (2018-11-08)
