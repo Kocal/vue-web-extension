@@ -89,7 +89,6 @@
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.20.2",
     "webpack-chrome-extension-reloader": "^0.8.3",
-    "webpack-cli": "^3.1.2",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-cli": "^3.1.2"
   }
 }
