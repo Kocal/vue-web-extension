@@ -15,7 +15,7 @@ do
     VUE_TEMPLATE=$scenario vue init .. $scenario
     cd $scenario
     cat << EOF > README.md
-# Project: Minimal
+# Project: $scenario
 
 This project has been generated with \`vue init kocal/vue-web-extension .\` command, following [$scenario scenario](../../scenarios/minimal.json).
 EOF
