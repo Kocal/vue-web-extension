@@ -55,6 +55,9 @@ const config = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      global: 'window',
+    }),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
