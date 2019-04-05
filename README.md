@@ -16,7 +16,7 @@ This template allows you to quickly start a web extension containing:
 - [Prettier](https://github.com/prettier/prettier) (configurable)
 - A git precommit hook for running Prettier by using [pretty-quick](https://github.com/azz/pretty-quick) or [precise-commits](https://github.com/nrwl/precise-commits) (configurable)
 - CSS extraction, with [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
-- A script for removing `eval` usages to comply with the Content Security Policy of Chrome/Firefox web store, is automatically called for each build
+- Compliable with the **C**ontent **S**ecurity **P**olicy of Chrome and Firefox web stores (some usages [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) are removed)
 - A script to package your extension into a `.zip` file
 
 ## Requirements
@@ -34,11 +34,11 @@ $ npm install
 $ npm run build
 ```
 
-### `npm run build` 
+### `npm run build`
 
 Build the extension into `dist` folder for **production**.
 
-### `npm run build:dev` 
+### `npm run build:dev`
 
 Build the extension into `dist` folder for **development**.
 
@@ -50,7 +50,7 @@ Watch for modifications then run `npm run build`.
 
 Watch for modifications then run `npm run build:dev`.
 
-It also enable [Hot Module Reloading](https://webpack.js.org/concepts/hot-module-replacement), thanks to [webpack-chrome-extension-reloader](https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader) plugin. 
+It also enable [Hot Module Reloading](https://webpack.js.org/concepts/hot-module-replacement), thanks to [webpack-chrome-extension-reloader](https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader) plugin.
 
 :warning: Keep in mind that HMR only works for your **background** entry.
 
