@@ -1,6 +1,6 @@
 {
   "name": "full",
-  "description": "A Vue.js web extension",
+  "description": "Extension generated with Kocal/vue-web-extension",
   "version": null,
   "manifest_version": 2,
   "icons": {

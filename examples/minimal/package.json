@@ -1,8 +1,8 @@
 {
   "name": "minimal",
   "version": "1.0.0",
-  "description": "A Vue.js web extension",
-  "author": "Hugo Alliaume <kocal@live.fr>",
+  "description": "Extension generated with Kocal/vue-web-extension",
+  "author": "Travis",
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
@@ -12,7 +12,7 @@
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -31,10 +31,9 @@
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "vue-loader": "^15.4.2",
-    "vue-template-compiler": "^2.5.17",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.20.2",
     "webpack-chrome-extension-reloader": "^0.8.3",
-    "webpack-cli": "^3.1.2",
-    "webpack-shell-plugin": "^0.5.0"
+    "webpack-cli": "^3.1.2"
   }
 }

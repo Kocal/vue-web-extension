@@ -25,7 +25,7 @@ const makeDestZipDirIfNotExists = () => {
 const buildZip = (src, dist, zipFilename) => {
   console.info(`Building ${zipFilename}...`);
 
-  const archive = archiver('zip', { zlib: { level: 9 } });
+  const archive = archiver('zip', { zlib: { level: 9 }});
   const stream = fs.createWriteStream(path.join(dist, zipFilename));
   
   return new Promise((resolve, reject) => {
