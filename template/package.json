@@ -77,7 +77,7 @@
     "@babel/preset-env": "^7.1.0",
     "babel-loader": "^8.0.2",
     "copy-webpack-plugin": "^4.5.3",
-    "core-js": "^2.6.5",
+    "core-js": "^3.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "ejs": "^2.6.1",
