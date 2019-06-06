@@ -80,7 +80,7 @@
     "copy-webpack-plugin": "^4.5.3",
     "core-js": "^3.0.1",
     "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
+    "css-loader": "^2.1.1",
     "ejs": "^2.6.1",
     "file-loader": "^1.1.11",
     "mini-css-extract-plugin": "^0.4.4",
