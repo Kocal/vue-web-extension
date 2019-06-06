@@ -57,7 +57,7 @@
     {{/if_eq}}
     {{/lint}}
     {{#prettier}}
-    "prettier": "^1.14.3",
+    "prettier": "^1.17.1",
     {{#if_eq prettierHook "prettyQuick"}}
     "husky": "^2.4.0",
     "pretty-quick": "^1.8.0",
@@ -67,8 +67,8 @@
     "precise-commits": "^1.0.2",
     {{/if_eq}}
     {{#lint}}
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-config-prettier": "^4.3.0",
     {{/lint}}
     {{/prettier}}
     {{#mozillaPolyfill}}
