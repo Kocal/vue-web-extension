@@ -26,7 +26,7 @@
   },
   "dependencies": {
     {{#mozillaPolyfill}}"webextension-polyfill": "^0.3.1",{{/mozillaPolyfill}}
-    {{#axios}}"axios": "^0.18.0",{{/axios}}
+    {{#axios}}"axios": "^0.19.0",{{/axios}}
     {{#router}}"vue-router": "^3.0.1",{{/router}}
     {{#store}}"vuex": "^3.0.1",{{/store}}
     "vue": "^2.6.10"
