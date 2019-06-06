@@ -8,22 +8,27 @@
     {{#lint}}
     "lint": "eslint --ext .js,.vue src",
     {{/lint}}
-    {{#prettier}}
-    {{#if_eq prettierHook "prettyQuick"}}
-    "precommit": "pretty-quick --staged",
-    {{/if_eq}}
-    {{#if_eq prettierHook "preciseCommits"}}
-    "precommit": "precise-commits",
-    {{/if_eq}}
     "prettier": "prettier \"src/**/*.{js,vue}\"",
     "prettier:write": "npm run prettier -- --write",
-    {{/prettier}}
+
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch"
   },
+  {{#prettier}}
+  "husky": {
+    "hooks": {
+      {{#if_eq prettierHook "prettyQuick"}}
+      "pre-commit": "pretty-quick --staged"
+      {{/if_eq}}
+      {{#if_eq prettierHook "preciseCommits"}}
+      "pre-commit": "precise-commits"
+      {{/if_eq}}
+    }
+  },
+  {{/prettier}}
   "dependencies": {
     {{#mozillaPolyfill}}"webextension-polyfill": "^0.3.1",{{/mozillaPolyfill}}
     {{#axios}}"axios": "^0.19.0",{{/axios}}
@@ -54,11 +59,11 @@
     {{#prettier}}
     "prettier": "^1.14.3",
     {{#if_eq prettierHook "prettyQuick"}}
-    "husky": "^0.14.3",
+    "husky": "^2.4.0",
     "pretty-quick": "^1.8.0",
     {{/if_eq}}
     {{#if_eq prettierHook "preciseCommits"}}
-    "husky": "^0.14.3",
+    "husky": "^2.4.0",
     "precise-commits": "^1.0.2",
     {{/if_eq}}
     {{#lint}}
