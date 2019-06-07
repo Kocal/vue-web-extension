@@ -8,11 +8,12 @@ do
     echo "Generating example $scenario..."
 
     echo "Removing previous example..."
+    mkdir -p examples
     cd examples
     rm -fr $scenario
 
     echo "Generating new example"
-    VUE_TEMPLATE=$scenario vue init .. $scenario
+    VUE_TEMPLATE=$scenario npx vue-cli init .. $scenario
     cd $scenario
     cat << EOF > README.md
 # Project: $scenario
