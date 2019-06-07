@@ -8,25 +8,30 @@
     {{#lint}}
     "lint": "eslint --ext .js,.vue src",
     {{/lint}}
-    {{#prettier}}
-    {{#if_eq prettierHook "prettyQuick"}}
-    "precommit": "pretty-quick --staged",
-    {{/if_eq}}
-    {{#if_eq prettierHook "preciseCommits"}}
-    "precommit": "precise-commits",
-    {{/if_eq}}
     "prettier": "prettier \"src/**/*.{js,vue}\"",
     "prettier:write": "npm run prettier -- --write",
-    {{/prettier}}
+
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "build-zip": "node scripts/build-zip.js",
     "watch": "npm run build -- --watch",
     "watch:dev": "cross-env HMR=true npm run build:dev -- --watch"
   },
+  {{#prettier}}
+  "husky": {
+    "hooks": {
+      {{#if_eq prettierHook "prettyQuick"}}
+      "pre-commit": "pretty-quick --staged"
+      {{/if_eq}}
+      {{#if_eq prettierHook "preciseCommits"}}
+      "pre-commit": "precise-commits"
+      {{/if_eq}}
+    }
+  },
+  {{/prettier}}
   "dependencies": {
     {{#mozillaPolyfill}}"webextension-polyfill": "^0.3.1",{{/mozillaPolyfill}}
-    {{#axios}}"axios": "^0.18.0",{{/axios}}
+    {{#axios}}"axios": "^0.19.0",{{/axios}}
     {{#router}}"vue-router": "^3.0.1",{{/router}}
     {{#store}}"vuex": "^3.0.1",{{/store}}
     "vue": "^2.6.10"
@@ -52,18 +57,18 @@
     {{/if_eq}}
     {{/lint}}
     {{#prettier}}
-    "prettier": "^1.14.3",
+    "prettier": "^1.17.1",
     {{#if_eq prettierHook "prettyQuick"}}
-    "husky": "^0.14.3",
+    "husky": "^2.4.0",
     "pretty-quick": "^1.8.0",
     {{/if_eq}}
     {{#if_eq prettierHook "preciseCommits"}}
-    "husky": "^0.14.3",
+    "husky": "^2.4.0",
     "precise-commits": "^1.0.2",
     {{/if_eq}}
     {{#lint}}
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-config-prettier": "^4.3.0",
     {{/lint}}
     {{/prettier}}
     {{#mozillaPolyfill}}
@@ -80,7 +85,7 @@
     "copy-webpack-plugin": "^4.5.3",
     "core-js": "^3.0.1",
     "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
+    "css-loader": "^2.1.1",
     "ejs": "^2.6.1",
     "file-loader": "^1.1.11",
     "mini-css-extract-plugin": "^0.4.4",
