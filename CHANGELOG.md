@@ -1,7 +1,24 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-    
+
+## [1.11.0](https://github.com/Kocal/vue-web-extension/compare/v1.10.0...v1.11.0) (2019-06-08)
+
+
+### Build System
+
+* **deps:** update ESLint ([688a2d5](https://github.com/Kocal/vue-web-extension/commit/688a2d5))
+* **deps:** update Vue to ^2.6.10 ([df9ae97](https://github.com/Kocal/vue-web-extension/commit/df9ae97))
+
+
+### Features
+
+* install babel runtime ([#411](https://github.com/Kocal/vue-web-extension/issues/411)) ([4319a38](https://github.com/Kocal/vue-web-extension/commit/4319a38))
+* use core-js 3 ([#410](https://github.com/Kocal/vue-web-extension/issues/410)) ([e27d910](https://github.com/Kocal/vue-web-extension/commit/e27d910))
+* **hot-reload:** migrate to webpack-extension-reloader ([#431](https://github.com/Kocal/vue-web-extension/issues/431)) ([cd68341](https://github.com/Kocal/vue-web-extension/commit/cd68341))
+
+
+
 <a name="1.10.0"></a>
 
 # [1.10.0](https://github.com/Kocal/vue-web-extension/compare/v1.9.0...v1.10.0) (2019-04-05)
