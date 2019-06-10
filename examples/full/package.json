@@ -62,6 +62,6 @@
     "web-ext-types": "^2.1.0",
     "webpack": "^4.20.2",
     "webpack-chrome-extension-reloader": "^0.8.3",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.3.3"
   }
 }
