@@ -56,6 +56,7 @@ const config = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?emitFile=false',
+          outputPath: '/fonts/'
         },
       },
     ],
