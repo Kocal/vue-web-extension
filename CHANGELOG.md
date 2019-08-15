@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/Kocal/vue-web-extension/compare/v1.11.0...v1.12.0) (2019-08-15)
+
+
+### Bug Fixes
+
+* change fonts directory to `/fonts/` ([#453](https://github.com/Kocal/vue-web-extension/issues/453)) ([8700217](https://github.com/Kocal/vue-web-extension/commit/8700217))
+* fix images loading when using a relative path ([#474](https://github.com/Kocal/vue-web-extension/issues/474)) ([795d91a](https://github.com/Kocal/vue-web-extension/commit/795d91a))
+
+
+### Features
+
+* **webpack:** handle fonts ([#445](https://github.com/Kocal/vue-web-extension/issues/445)) ([9ee09ae](https://github.com/Kocal/vue-web-extension/commit/9ee09ae))
+
+
+
 ## [1.11.0](https://github.com/Kocal/vue-web-extension/compare/v1.10.0...v1.11.0) (2019-06-08)
 
 
