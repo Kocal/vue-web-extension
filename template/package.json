@@ -38,22 +38,22 @@
   },
   "devDependencies": {
     {{#lint}}
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.1.2",
-    "eslint-plugin-vue": "^5.2.2",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-vue": "^6.0.1",
     {{#if_eq lintConfig "standard"}}
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^7.0.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
-    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-airbnb-base": "^14.0.0",
     "eslint-import-resolver-webpack": "^0.10.1",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.18.2",
     {{/if_eq}}
     {{/lint}}
     {{#prettier}}
@@ -67,8 +67,8 @@
     "precise-commits": "^1.0.2",
     {{/if_eq}}
     {{#lint}}
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-config-prettier": "^6.7.0",
     {{/lint}}
     {{/prettier}}
     {{#mozillaPolyfill}}
