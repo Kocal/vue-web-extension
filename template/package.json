@@ -5,7 +5,7 @@
   "author": "{{ author }}",
   {{#if license}}"license": "{{ license }}",{{/if}}
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     {{#lint}}

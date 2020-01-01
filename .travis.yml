@@ -11,8 +11,8 @@ cache:
     - examples/minimal/node_modules
 
 node_js:
-- "8"
 - "10"
+- "12"
 - "node"
 
 env:
