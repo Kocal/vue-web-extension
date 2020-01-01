@@ -4,6 +4,9 @@
   "description": "{{ description }}",
   "author": "{{ author }}",
   {{#if license}}"license": "{{ license }}",{{/if}}
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     {{#lint}}
     "lint": "eslint --ext .js,.vue src",

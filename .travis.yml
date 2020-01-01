@@ -12,6 +12,8 @@ cache:
 
 node_js:
 - "8"
+- "10"
+- "node"
 
 env:
   - VUE_TEMPLATES="minimal full full-airbnb"
