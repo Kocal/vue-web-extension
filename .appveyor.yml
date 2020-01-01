@@ -11,7 +11,7 @@ cache:
   - '%USERPROFILE%\.cache'
 
 install:
-  - ps: Install-Product node 8
+  - ps: Install-Product node 10
   - ps: Install-Module -Name PSWriteColor
   - ps: Install-Module -Name Assert
   - npm install -g yarn vue-cli

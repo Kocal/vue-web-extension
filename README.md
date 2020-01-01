@@ -21,7 +21,7 @@ This template allows you to quickly start a web extension containing:
 
 ## Requirements
 
-- Node.js >= 8 and npm >= 5
+- Node.js >= 10 and npm >= 5
 - [git](https://git-scm.com)
 - [vue-cli 2](https://github.com/vuejs/vue-cli/tree/v2)
 
