@@ -10,6 +10,6 @@
     "release": "standard-version"
   },
   "devDependencies": {
-    "standard-version": "^6.0.1"
+    "standard-version": "^7.1.0"
   }
 }
