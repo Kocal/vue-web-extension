@@ -2,12 +2,11 @@
 
 The following steps describe the intended release process and optional services to use (e.g. Travis).
 
-
 ## Handle extension version
 
 If you take a look to your `src/manifest.json`, you will see that `version` is `null`.
 
-When building, it injects the version of your `package.json` in your `src/manifest.json`. That means you should not update `manifest.json`'s directly.
+This is perfectly normal. The version is automatically injected when building the extension, by taking the `version` from your `package.json`. You should not update `manifest.json`'s directly.
 
 By doing this, it means that you could use one of the following commands to easily update your version:
 
@@ -26,9 +25,8 @@ yarn version --new-version 1.2.3
 
 ::: tip Tips
 1. It is recommended to follow [Sementic Versioning](https://semver.org/) rules!
-2. Using `npm version` or `yarn version` will create update your `package.json`, create a new commit and a new tag, this is really helpful!
+2. Using `npm version` or `yarn version` will update your `package.json`, create a new commit and a new tag, this is really helpful!
 :::
-
 
 ## Building for production
 
@@ -49,7 +47,6 @@ Those commands will:
 - build a `.zip`, located in `dist/zip/<your-extension-name>-<version>.zip`
 
 When publishing on the [Chrome Web Store](https://chrome.google.com/webstore) (or [Firefox Add-ons](https://addons.mozilla.org)), you should upload your fresh `.zip`!
-
 
 ## Automatic build and release with Travis
 
