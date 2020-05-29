@@ -1,14 +1,14 @@
-# Using Vue Devtools on your popup
+# Using Vue Devtools in Your Popup
 
 By default, you can't use [Vue Devtools](https://github.com/vuejs/vue-devtools) on your popup page. The issue has already been [discussed](https://github.com/vuejs/vue-devtools/issues/120) in Vue Devtools repository.
 
 The GitHub user [@wujunchuan](https://github.com/wujunchuan) found a solution to make it works anyway.
 
-## Install and run Vue Devtools
+## Install and Run Vue Devtools
 
 Install Vue Devtools (e.g.: `npm i -g @vue/devtools`) and then run `vue-devtools`.
 
-## Configuring your extension
+## Configuring Your Extension
 
 A new window opens, copy the first `<script>` (it should be something like `<script src="http://localhost:8098"></script>`).
 
@@ -58,12 +58,12 @@ You also need to update Content Security Policy of your extension. For this, upd
 },
 ```
 
-::: tip
+::: tip Tips
 1. If running webpack in watch mode, you need to stop and restart webpack to apply configuration changes.
 2. You should disable and re-enable your extension in Chrome, to take care of `manifest.json` changes.
 :::
 
-### Opening your popup
+### Opening Your Popup
 
 After that, you can open your popup and normally you will see a message like `Connected to Vue.js devtools`.
 
