@@ -38,6 +38,7 @@ module.exports = {
         collapsable: false,
         children: [
           'development/Vue-Devtools',
+          'development/TailwindCSS',
         ],
       },
       {

@@ -25,6 +25,10 @@ This template allows you to quickly start a web extension containing:
 - [git](https://git-scm.com)
 - [vue-cli 2](https://github.com/vuejs/vue-cli/tree/v2)
 
+## Documentation
+
+The documentation can be found on [vue-web-extension.netlify.app](https://vue-web-extension.netlify.app/). Please check the documentation website and the [open and closed issues](https://github.com/Kocal/vue-web-extension/issues?q=), before raising a new issue.
+
 ## Usage
 
 ```bash

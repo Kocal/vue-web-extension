@@ -1,4 +1,4 @@
-# Production workflow
+# Production Workflow
 
 The following steps describe the intended release process and optional services to use (e.g. Travis).
 
