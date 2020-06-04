@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Vue Web-Extension - a web-extension boilerplate for VueJS',
+  title: 'Vue Web-Extension - A Web-Extension Boilerplate for VueJS',
   description: '🛠️ A boilerplate for quickly starting a web extension with Vue, webpack 4, ESLint and more!',
 
   plugins: {
