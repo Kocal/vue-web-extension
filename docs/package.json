@@ -1,4 +1,5 @@
 {
+  "private": true,
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build"
