@@ -67,4 +67,7 @@ You also need to update Content Security Policy of your extension. For this, upd
 
 After that, you can open your popup and normally you will see a message like `Connected to Vue.js devtools`.
 
-To make your development easier, you can open your popup in a new tab: `chrome-extension://<extension id>/popup/popup.html`.
+To make your development easier, you can open your popup in a new tab using:
+
+- `chrome-extension://<extension id>/popup/popup.html` in Chrome-based browsers or
+- `moz-extension://<extension id>/popup/popup.html` in Firefox-based browsers
