@@ -27,7 +27,7 @@ This template allows you to quickly start a web extension containing:
 
 ## Documentation
 
-The documentation can be found on [vue-web-extension.netlify.app](https://vue-web-extension.netlify.app/). Please check the documentation website and the [open and closed issues](https://github.com/Kocal/vue-web-extension/issues?q=), before raising a new issue.
+The documentation can be found on [v1-vue-web-extension.netlify.app](https://v1-vue-web-extension.netlify.app/). Please check the documentation website and the [open and closed issues](https://github.com/Kocal/vue-web-extension/issues?q=), before raising a new issue.
 
 ## Usage
 
