@@ -3,27 +3,24 @@
 [![Build Status (Travis)](https://travis-ci.org/Kocal/vue-web-extension.svg?branch=master)](https://travis-ci.org/Kocal/vue-web-extension)
 [![Build Status (AppVeyor)](https://ci.appveyor.com/api/projects/status/huaoxwvqcoyx2x08/branch/master?svg=true)](https://ci.appveyor.com/project/Kocal/vue-web-extension/branch/master)
 
-This template allows you to quickly start a web extension containing:
+:warning: This README is for the master version of the preset. If you use the v1 of this boilerplate with Vue-CLI 2 support, please see [`v1` branch](https://github.com/Kocal/vue-web-extension/tree/v1).
 
-- Boilerplate for `manifest.json` and `background.js` files, and for `icons` / `popup` folders
-- [Vue](https://github.com/vuejs/vue)
-- [Vue-router](https://github.com/vuejs/vue-router) (configurable)
-- [Vuex](https://github.com/vuejs/vuex) (configurable)
+---
+
+This Vue CLI preset allows you to quickly start a web extension containing:
+
+- Everything you need to build a web extension (`manifest.json`, `.zip` building, ...), thanks to [adambullmer/vue-cli-plugin-browser-extension](https://github.com/adambullmer/vue-cli-plugin-browser-extension)
+- [Vue 2+](https://github.com/vuejs/vue)
+- [Vue-router](https://github.com/vuejs/vue-router) and [Vuex](https://github.com/vuejs/vuex)
 - [Axios](https://github.com/axios/axios) (configurable)
-- [Webpack 4](https://github.com/webpack/webpack)
 - [Babel](https://github.com/babel/babel) with [preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
-- [ESLint](https://github.com/eslint/eslint) (configurable)
-- [Prettier](https://github.com/prettier/prettier) (configurable)
-- A git precommit hook for running Prettier by using [pretty-quick](https://github.com/azz/pretty-quick) or [precise-commits](https://github.com/nrwl/precise-commits) (configurable)
-- CSS extraction, with [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)
-- Compliable with the **C**ontent **S**ecurity **P**olicy of Chrome and Firefox web stores (some usages [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) are removed)
-- A script to package your extension into a `.zip` file
+- [ESLint](https://github.com/eslint/eslint) and [Prettier](https://github.com/prettier/prettier) (both configurable)
 
 ## Requirements
 
 - Node.js >= 10 and npm >= 5
 - [git](https://git-scm.com)
-- [vue-cli 2](https://github.com/vuejs/vue-cli/tree/v2)
+- [vue-cli 3+](https://github.com/vuejs/vue-cli)
 
 ## Documentation
 
@@ -32,9 +29,8 @@ The documentation can be found on [vue-web-extension.netlify.app](https://vue-we
 ## Usage
 
 ```bash
-$ vue init kocal/vue-web-extension my-extension
+$ vue create --preset kocal/vue-web-extension my-extension
 $ cd my-extension
-$ npm install
 $ npm run build
 ```
 
@@ -42,23 +38,15 @@ $ npm run build
 
 Build the extension into `dist` folder for **production**.
 
-### `npm run build:dev`
+A zip file is also built and is located in `artifacts` directory.
 
-Build the extension into `dist` folder for **development**.
+### `npm run serve`
 
-### `npm run watch`
 
-Watch for modifications then run `npm run build`.
+Build the extension for **development** and watch over file changes.
 
-### `npm run watch:dev`
+It also automatically reload your extension into your browsers, thanks to [webpack-extension-reloader](https://github.com/rubenspgcavalcante/webpack-extension-reloader) plugin.
 
-Watch for modifications then run `npm run build:dev`.
+## Options
 
-It also enable [Hot Module Reloading](https://webpack.js.org/concepts/hot-module-replacement), thanks to [webpack-extension-reloader](https://github.com/rubenspgcavalcante/webpack-extension-reloader) plugin.
-
-:warning: Keep in mind that HMR only works for your **background** entry.
-
-### `npm run build-zip`
-
-Build a zip file following this format `<name>-v<version>.zip`, by reading `name` and `version` from `manifest.json` file.
-Zip file is located in `dist-zip` folder.
+See https://github.com/adambullmer/vue-cli-plugin-browser-extension#plugin-options
