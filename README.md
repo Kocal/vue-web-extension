@@ -32,7 +32,7 @@ The documentation can be found on [v1-vue-web-extension.netlify.app](https://v1-
 ## Usage
 
 ```bash
-$ vue init kocal/vue-web-extension my-extension
+$ vue init kocal/vue-web-extension#v1 my-extension
 $ cd my-extension
 $ npm install
 $ npm run build
