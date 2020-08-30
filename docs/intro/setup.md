@@ -5,7 +5,7 @@ Starting a new extension project using the boilerplate is done using [Vue CLI 2]
 To initiate a new extension project run the following steps:
 
 ``` bash
-vue init kocal/vue-web-extension my-extension
+vue init kocal/vue-web-extension#v1 my-extension
 cd my-extension
 npm install
 npm run build
