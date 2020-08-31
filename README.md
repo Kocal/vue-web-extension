@@ -1,7 +1,6 @@
 # vue-web-extension
 
-[![Build Status (Travis)](https://travis-ci.org/Kocal/vue-web-extension.svg?branch=master)](https://travis-ci.org/Kocal/vue-web-extension)
-[![Build Status (AppVeyor)](https://ci.appveyor.com/api/projects/status/huaoxwvqcoyx2x08/branch/master?svg=true)](https://ci.appveyor.com/project/Kocal/vue-web-extension/branch/master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ae42a82e-1338-4b34-85b8-9100c3d47510/deploy-status)](https://app.netlify.com/sites/vue-web-extension/deploys)
 
 :warning: This README is for the master version of the preset. If you use the v1 of this boilerplate with Vue-CLI 2 support, please see [`v1` branch](https://github.com/Kocal/vue-web-extension/tree/v1).
 
