@@ -4,13 +4,14 @@ The following steps describe the intended release process and optional services 
 
 ## Handle extension version
 
-If you take a look to your `src/manifest.json`, you will see that `version` is `null`.
+If you take a look to your `src/manifest.json`, you will see that `version` key does not exist.
 
-This is perfectly normal. The version is automatically injected when building the extension, by taking the `version` from your `package.json`. You should not update `manifest.json`'s directly.
+This is perfectly normal. The version is automatically injected when building the extension, by taking the `version` from your `package.json`. You don't need to update your `manifest.json` directly.
 
 By doing this, it means that you could use one of the following commands to easily update your version:
 
 ```bash
+# with npm
 npm version major # 1.x.x -> 2.x.x, when you release a breaking change
 npm version minor # x.1.x -> x.2.x, when you release a feature
 npm version patch # x.x.1 -> x.x.2, when you release a patch
@@ -30,21 +31,12 @@ yarn version --new-version 1.2.3
 
 ## Building for production
 
-Once you have updated your version, you can run:
+Once you have updated your version, you can run `npm run build`.
 
-```bash
-npm run build
-npm run build-zip
-
-# for yarn:
-yarn build
-yarn build-zip
-```
-
-Those commands will:
+This command will:
 
 - build your extension for production (and use your `package.json` version for your `manifest.json`), located in `dist/`
-- build a `.zip`, located in `dist/zip/<your-extension-name>-<version>.zip`
+- build a `.zip`, located in `articats/<name>-<version>-<mode>.zip`
 
 When publishing on the [Chrome Web Store](https://chrome.google.com/webstore) (or [Firefox Add-ons](https://addons.mozilla.org)), you should upload your fresh `.zip`!
 
@@ -55,10 +47,9 @@ If you are using [Travis](https://travis-ci.com/), you can setup [GitHub Release
 ```yaml
 script:
   - yarn build
-  - yarn build-zip
 
 before_deploy:
-  - export RELEASE_EXTENSION_FILE=$(ls dist-zip/*.zip)
+  - export RELEASE_EXTENSION_FILE=$(ls artifacts/*.zip)
   - echo "Deploying ${RELEASE_EXTENSION_FILE} to GitHub releases"
 
 deploy:
@@ -104,8 +95,6 @@ jobs:
 
             -   run: yarn build
 
-            -   run: yarn build-zip
-
             -   name: Create Release
                 id: create_release
                 uses: actions/create-release@v1
@@ -118,7 +107,7 @@ jobs:
             -   name: Upload Assets to Release with a wildcard
                 uses: csexton/release-asset-action@v2
                 with:
-                    pattern: "dist-zip/*.zip"
+                    pattern: "artifacts/*.zip"
                     github-token: ${{ secrets.GITHUB_TOKEN }}
                     release-url: ${{ steps.create_release.outputs.upload_url }}
 ```

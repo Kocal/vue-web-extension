@@ -2,76 +2,90 @@
 
 Using [TailwindCSS](https://tailwindcss.com/) is optional and needs to be configured, if desired. To style your extension popup or options page using Tailwind, you will need to install the required dependencies and configure the webpack build steps.
 
-Below you find the required steps to configure Vue-Web-Extension for TailwindCSS.
+Below you find the required steps to integrate TailwindCSS to your web extension.
 
-1. Install dependencies `postcss-loader @fullhuman/postcss-purgecss`:
+## 1. Installation
 
-    ``` bash
-    # with npm:
-    npm install postcss-loader @fullhuman/postcss-purgecss tailwindcss --only=dev
+### 1. Automatic, via a Vue CLI plugin
 
-    # using yarn:
-    yarn add postcss-loader @fullhuman/postcss-purgecss tailwindcss --dev
-    ```
+You can use a Vue CLI plugin, for example [vue-cli-plugin-tailwind](https://www.npmjs.com/package/vue-cli-plugin-tailwind) or [@64robots/vue-cli-plugin-tailwind](https://www.npmjs.com/package/@64robots/vue-cli-plugin-tailwind) npm packages.
 
-2. Update your `webpack.config.js` to use `postcss-loader`:
+### 2. Manual installation
 
-    ``` diff
-        {
-            test: /\.css$/,
-    +        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
-    -        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        },
-    ```
+Or you can do the installation steps manually.
 
-3.  Create a file called `postcss.config.js` next to your `webpack.config.js` with the following contents:
+Install dependency `tailwindcss`:
 
-    ``` js
-    /* eslint-disable import/no-extraneous-dependencies */
-    const tailwindcss = require('tailwindcss');
+``` bash
+# with npm:
+npm install tailwindcss
 
-    const purgecss = require('@fullhuman/postcss-purgecss')({
-        // Specify the paths to all of the template files in your project
-        content: ['./src/**/*.vue'],
+# using yarn:
+yarn add tailwindcss
+```
+Then initialize Tailwind by calling `./node_modules/.bin/tailwind init`, it will create a `tailwind.config.js` file.
 
-        // Include any special characters you're using in this regular expression
-        defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+## 2. Configuring PostCSS
 
-        extractors: [
-            // https://purgecss.com/guides/vue.html
-            {
-                extensions: ['vue'],
-                extractor(content) {
-                    const contentWithoutStyleBlocks = content.replace(/<style[^]+?<\/style>/gi, '');
-                    return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || [];
-                },
-            },
-        ],
+You must configure PostCSS by adding the Tailwind's plugin:
 
-        whitelist: [],
-        whitelistPatterns: [
-            /-(leave|enter|appear)(|-(to|from|active))$/, // transitions
-            /data-v-.*/, // scoped css
-        ],
-    });
+```js
+// postcss.config.js
+module.exports = {
+  plugins: [
+    // ...
+    require('tailwindcss'),
+    require('autoprefixer'), // if you have installed `autoprefixer`
+    // ...
+  ]
+}
+```
 
-    module.exports = {
-        plugins: [tailwindcss(), ...(process.env.NODE_ENV === 'production' ? [purgecss] : [])],
-    };
-    ```
+## 3. Controlling File Size
 
-4. Add Tailwind Directives:
+Your generated CSS files can be really big when using Tailwind. 
 
-    To make the Tailwind classes available you need to add the following lines to your `src/popup/App.vue`-file:
+To prevent that when building for production, you must use Tailwind's `purge` option to tree-shake unused styles
+and optimize your final build size.
 
-    ``` vue
-    <style>
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-    </style>
-   ```
+```js
+// tailwind.config.js
+module.exports = {
+  purge: {
+    // Specify the paths to all of the template files in your project
+    content: ['src/**/*.vue'],
+  
+    // Whitelist selectors by using regular expression
+    whitelistPatterns: [
+        /-(leave|enter|appear)(|-(to|from|active))$/, // transitions
+        /data-v-.*/, // scoped css
+    ],
+  }
+  // ...
+}
+```
+ 
+## 4. Usage
 
-   In a similar way you can add it to the options page of course.
+To make the Tailwind classes available you need to add the following lines to your `src/popup/App.vue`-file:
+
+``` vue
+<style>
+/* basic styles */
+html {
+  width: 400px;
+  height: 400px;
+}
+
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+
+@tailwind utilities;
+</style>
+```
+
+In a similar way you can add it to the options page of course.
 
 Now you should be able to use the commonly used Tailwind classes in your web-extension.

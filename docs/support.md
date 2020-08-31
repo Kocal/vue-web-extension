@@ -4,4 +4,4 @@ Support and assistance in case of issues is done using the [GitHub Issues](https
 
 ## Sponsor
 
-If this boilerplate is useful for you or your business, you should consider [sponsoring the project](https://github.com/Kocal/vue-web-extension).
+If this preset is useful for you or your business, you should consider [sponsoring the project](https://github.com/Kocal/vue-web-extension).

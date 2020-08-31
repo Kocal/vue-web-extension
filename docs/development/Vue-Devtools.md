@@ -15,21 +15,26 @@ A new window opens, copy the first `<script>` (it should be something like `<scr
 
 ### Updating your .html
 
-Then update your `src/popup/popup.html` like this:
+Then update your `public/browser-extension.html` like this:
 
 ``` diff
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="popup.css">
-+ <% if (NODE_ENV === 'development') { %>
-+   <!-- Load Vue Devtools remote ONLY in development -->
-+   <script src="http://localhost:8098"></script>
-+ <% } %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title><%= htmlWebpackPlugin.options.title %></title>
++  <% if (process.env.NODE_ENV === 'development') { %>
++  <!-- Load Vue Devtools remote ONLY in development -->
++  <script src="http://localhost:8098"></script>
++  <% } %>
 </head>
-...
+<body>
+  <div id="app"></div>
+</body>
+</html>
+
 ```
 
 ::: tip
@@ -38,6 +43,8 @@ Since [#336](https://github.com/Kocal/vue-web-extension/pull/336), it is now pos
 
 
 ### Updating Content Security Policy
+
+# TODO: handle this part
 
 You also need to update Content Security Policy of your extension. For this, update your `webpack.config.js` by adding `http://localhost:8098` in `manifest.json`'s `content_security_policy`:
 
