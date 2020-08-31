@@ -12,50 +12,54 @@ Install Vue Devtools (e.g.: `npm i -g @vue/devtools`) and then run `vue-devtools
 
 A new window opens, copy the first `<script>` (it should be something like `<script src="http://localhost:8098"></script>`).
 
-
 ### Updating your .html
 
-Then update your `src/popup/popup.html` like this:
+Then update your `public/browser-extension.html` like this:
 
 ``` diff
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="popup.css">
-+ <% if (NODE_ENV === 'development') { %>
-+   <!-- Load Vue Devtools remote ONLY in development -->
-+   <script src="http://localhost:8098"></script>
-+ <% } %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title><%= htmlWebpackPlugin.options.title %></title>
++  <% if (process.env.NODE_ENV === 'development') { %>
++    <!-- Load Vue Devtools remote ONLY in development -->
++    <script src="http://localhost:8098"></script>
++  <% } %>
 </head>
-...
+<body>
+  <div id="app"></div>
+</body>
+</html>
+
 ```
-
-::: tip
-Since [#336](https://github.com/Kocal/vue-web-extension/pull/336), it is now possible to use [EJS](http://ejs.co/) on HTML files. Also it automatically inject all environment variables from `process.env`.
-:::
-
 
 ### Updating Content Security Policy
 
-You also need to update Content Security Policy of your extension. For this, update your `webpack.config.js` by adding `http://localhost:8098` in `manifest.json`'s `content_security_policy`:
+You also need to update Content Security Policy of your extension. For this, update your `vue.config.js` and use the option `manifestTransformer` from [`vue-cli-plugin-browser-extension`'s options](https://github.com/adambullmer/vue-cli-plugin-browser-extension#plugin-options).
 
-``` diff
-{
-  from: 'manifest.json',
-  to: 'manifest.json',
-  transform: (content) => {
-    const jsonContent = JSON.parse(content);
-    jsonContent.version = version;
-
-    if (config.mode === 'development') {
--      jsonContent['content_security_policy'] = "script-src 'self' 'unsafe-eval'; object-src 'self'";
-+      jsonContent['content_security_policy'] = "script-src 'self' 'unsafe-eval' http://localhost:8098; object-src 'self'";
+```js
+// vue.config.js
+module.exports = {
+  pages: {
+    // ...
+  },
+  pluginOptions: {
+    browserExtension: {
+      // ...
+      manifestTransformer: (manifest) => {
+        if (process.env.NODE_ENV === 'development') {
+          manifest.content_security_policy = manifest.content_security_policy.replace('script-src', 'script-src http://localhost:8098');
+        }
+        
+        return manifest;
+      }
     }
+  }
+}
 
-    return JSON.stringify(jsonContent, null, 2);
-},
 ```
 
 ::: tip Tips
@@ -65,9 +69,4 @@ You also need to update Content Security Policy of your extension. For this, upd
 
 ### Opening Your Popup
 
-After that, you can open your popup and normally you will see a message like `Connected to Vue.js devtools`.
-
-To make your development easier, you can open your popup in a new tab using:
-
-- `chrome-extension://<extension id>/popup/popup.html` in Chrome-based browsers or
-- `moz-extension://<extension id>/popup/popup.html` in Firefox-based browsers
+After that, you can inspect your popup and you will see a message like `Connected to Vue.js devtools`.

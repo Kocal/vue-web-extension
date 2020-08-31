@@ -1,0 +1,15 @@
+{
+  "useConfigFiles": true,
+  "cssPreprocessor": "sass",
+  "plugins": {
+    "@vue/cli-plugin-babel": {},
+    "@vue/cli-plugin-eslint": {
+      "prompts": true
+    },
+    "@vue/cli-plugin-router": {},
+    "@vue/cli-plugin-vuex": {},
+    "vue-cli-plugin-browser-extension": {
+      "prompts": true
+    }
+  }
+}
