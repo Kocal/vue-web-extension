@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.0](https://github.com/Kocal/vue-web-extension/compare/v1.12.0...v2.0.0) (2020-08-31)
+
+Vue-web-extension now becomes a [Vue CLI 3+ preset](https://cli.vuejs.org/guide/plugins-and-presets.html#presets)!
+
+Support for Vue CLI <2 has been removed.
+
+See [#622](https://github.com/Kocal/vue-web-extension/pull/622) for more information!
+
+### Bug Fixes
+
+* images & fonts not being properly bundled ([#571](https://github.com/Kocal/vue-web-extension/issues/571)) ([91de1d5](https://github.com/Kocal/vue-web-extension/commit/91de1d5f031ce17d9b3c1ffeaf38e855d4251d23))
+
 ## [1.12.0](https://github.com/Kocal/vue-web-extension/compare/v1.11.0...v1.12.0) (2019-08-15)
 
 

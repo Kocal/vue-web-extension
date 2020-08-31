@@ -1,6 +1,6 @@
 {
   "name": "vue-web-extension",
-  "version": "1.12.0",
+  "version": "2.0.0",
   "description": "A Vue CLI preset for quickly starting a web extension with webpack, Vue and more!",
   "repository": "https://github.com/Kocal/vue-web-extension.git",
   "author": "Hugo Alliaume <kocal@live.fr>",
