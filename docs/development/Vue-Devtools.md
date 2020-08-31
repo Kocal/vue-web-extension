@@ -50,7 +50,7 @@ module.exports = {
     browserExtension: {
       // ...
       manifestTransformer: (manifest) => {
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV === 'development') {
           manifest.content_security_policy = manifest.content_security_policy.replace('script-src', 'script-src http://localhost:8098');
         }
         
